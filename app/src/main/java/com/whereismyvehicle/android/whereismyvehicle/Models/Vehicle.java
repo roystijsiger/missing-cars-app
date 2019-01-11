@@ -1,5 +1,7 @@
 package com.whereismyvehicle.android.whereismyvehicle.Models;
 
+import android.location.Location;
+
 import java.util.ArrayList;
 
 public class Vehicle {
@@ -7,11 +9,11 @@ public class Vehicle {
     private VehicleType type;
     private String color;
     private String licencePlate;
-    private GeoLocation location;
+    private Location location;
 
     private ArrayList<Sighting> sightings;
 
-    public Vehicle(int id, VehicleType type, String color, String licencePlate, GeoLocation location, ArrayList<Sighting> sightings) {
+    public Vehicle(int id, VehicleType type, String color, String licencePlate, Location location, ArrayList<Sighting> sightings) {
         this.id = id;
         this.type = type;
         this.color = color;
@@ -51,11 +53,11 @@ public class Vehicle {
         return this;
     }
 
-    public GeoLocation getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public Vehicle setLocation(GeoLocation location) {
+    public Vehicle setLocation(Location location) {
         this.location = location;
         return this;
     }

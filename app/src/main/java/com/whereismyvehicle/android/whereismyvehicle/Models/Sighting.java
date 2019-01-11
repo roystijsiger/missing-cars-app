@@ -1,12 +1,14 @@
 package com.whereismyvehicle.android.whereismyvehicle.Models;
 
+import android.location.Location;
+
 public class Sighting {
     private int id;
     private Vehicle vehicle;
-    private GeoLocation location;
+    private Location location;
     private String photo;
 
-    public Sighting(int id, Vehicle vehicle, GeoLocation location, String photo) {
+    public Sighting(int id, Vehicle vehicle, Location location, String photo) {
         this.id = id;
         this.vehicle = vehicle;
         this.location = location;
@@ -26,11 +28,11 @@ public class Sighting {
         return this;
     }
 
-    public GeoLocation getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public Sighting setLocation(GeoLocation location) {
+    public Sighting setLocation(Location location) {
         this.location = location;
         return this;
     }
