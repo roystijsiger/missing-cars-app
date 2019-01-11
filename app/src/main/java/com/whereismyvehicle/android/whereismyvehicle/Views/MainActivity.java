@@ -1,7 +1,9 @@
-package com.whereismyvehicle.android.whereismyvehicle;
+package com.whereismyvehicle.android.whereismyvehicle.Views;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.whereismyvehicle.android.whereismyvehicle.R;
 
 public class MainActivity extends AppCompatActivity {
 
