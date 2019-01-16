@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.nav_sightings:
                     selectedFragment = new SightingsFragment();
-
                         break;
                 case R.id.nav_vehicles:
                     selectedFragment = new VehiclesFragment();
