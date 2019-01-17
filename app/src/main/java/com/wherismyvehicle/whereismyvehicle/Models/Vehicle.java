@@ -7,15 +7,17 @@ import java.util.ArrayList;
 public class Vehicle {
     private int id;
     private VehicleType type;
+    private String brand;
     private String color;
     private String licencePlate;
     private Location location;
 
     private ArrayList<Sighting> sightings;
 
-    public Vehicle(int id, VehicleType type, String color, String licencePlate, Location location, ArrayList<Sighting> sightings) {
+    public Vehicle(int id, VehicleType type, String brand, String color, String licencePlate, Location location, ArrayList<Sighting> sightings) {
         this.id = id;
         this.type = type;
+        this.brand = brand;
         this.color = color;
         this.licencePlate = licencePlate;
         this.location = location;
@@ -64,5 +66,14 @@ public class Vehicle {
 
     public ArrayList<Sighting> getSightings() {
         return sightings;
+    }
+
+    public String getBrand(){
+        return brand;
+    }
+
+    public Vehicle setBrand(String brand){
+        this.brand = brand;
+        return this;
     }
 }

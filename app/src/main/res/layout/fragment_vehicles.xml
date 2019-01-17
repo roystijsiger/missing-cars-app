@@ -31,6 +31,7 @@
         android:layout_below="@id/txt_vehicle_title"/>
 
     <ListView
+        android:id="@+id/listview_vehicles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/seekbar_vehicle"
