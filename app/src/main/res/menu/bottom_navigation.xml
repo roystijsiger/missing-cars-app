@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_vehicles"
-        android:icon="@drawable/ic_directions_car_black_24dp"
+        android:icon="@drawable/ic_direction_cars"
         android:title="@string/nav_vehicles" />
     <item
         android:id="@+id/nav_sightings"
-        android:icon="@drawable/ic_gps_fixed_black_24dp"
+        android:icon="@drawable/ic_gps_fixed"
         android:title="@string/nav_sightings" />
     <item
         android:id="@+id/nav_profile"
-        android:icon="@drawable/ic_person_black_24dp"
+        android:icon="@drawable/ic_person"
         android:title="@string/nav_user" />
 </menu>

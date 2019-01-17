@@ -7,17 +7,21 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.wherismyvehicle.whereismyvehicle.Presenters.VehiclesFragmentPresenter;
 
 public class VehiclesFragment extends Fragment implements VehiclesFragmentPresenter.View {
     private VehiclesFragmentPresenter presenter;
+    private ListView missingVehicles;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
         presenter = new VehiclesFragmentPresenter(this);
+
+        
     }
 
     @Nullable

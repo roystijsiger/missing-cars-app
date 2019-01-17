@@ -2,36 +2,46 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_dark"
     android:padding="10dp">
 
     <TextView
-        android:id="@+id/Vehicle_title"
+        android:id="@+id/txt_vehicle_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vehicles"
+        android:text="Vehicle radius"
         android:layout_centerHorizontal="true"
-        android:textSize="30sp"
+        android:textSize="12sp"
+        android:layout_alignParentLeft="true"
         />
 
     <SeekBar
-        android:id="@+id/Vehicle_seekbar"
+        android:id="@+id/seekbar_vehicle"
         android:layout_width="match_parent"
         android:layout_toLeftOf="@+id/txt_kilometer"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Vehicle_title"
+        android:layout_below="@id/txt_vehicle_title"
         />
+
     <TextView
         android:id="@+id/txt_kilometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="km"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/Vehicle_title"/>
+        android:layout_below="@id/txt_vehicle_title"/>
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Vehicle_seekbar"></ListView>
+        android:layout_below="@id/seekbar_vehicle"
+        android:layout_marginTop="5dp" />
 
+    <ImageButton
+        android:id="@+id/img_add_vehicle"
+        android:src="@drawable/ic_add_circle"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="?android:attr/colorBackground"/>
 </RelativeLayout>
