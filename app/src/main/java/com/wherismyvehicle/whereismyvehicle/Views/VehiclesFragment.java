@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class VehiclesFragment extends Fragment implements VehiclesFragmentPresenter.View {
     private VehiclesFragmentPresenter presenter;
-    private View activityView;
+    private View fragmentView;
     private ListView missingVehicles;
 
     @Override
@@ -29,10 +29,7 @@ public class VehiclesFragment extends Fragment implements VehiclesFragmentPresen
 
         presenter = new VehiclesFragmentPresenter(this);
 
-        this.activityView = getView();
-        this.missingVehicles = this.activityView.findViewById(R.id.listview_vehicles);
 
-        this.setMissingVehicles();
     }
 
     private void setMissingVehicles(){
@@ -46,13 +43,17 @@ public class VehiclesFragment extends Fragment implements VehiclesFragmentPresen
         Vehicle vehicle3 = new Vehicle(3, VehicleType.MotorCycle,"Volvo","Purple","28-ab-ab", new Location("service Provider"),new ArrayList<Sighting>());
         arrayList.add(vehicle3);
 
-        VehiclesAdapter vehicleAdapter = new VehiclesAdapter(this.activityView.getContext(), arrayList);
+        VehiclesAdapter vehicleAdapter = new VehiclesAdapter(getActivity(), arrayList);
         this.missingVehicles.setAdapter(vehicleAdapter);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_vehicles, container, false);
+        this.fragmentView = inflater.inflate(R.layout.fragment_vehicles, container, false);
+        this.missingVehicles = this.fragmentView.findViewById(R.id.listview_vehicles);
+
+        this.setMissingVehicles();
+        return this.fragmentView;
     }
 }
