@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.wherismyvehicle.whereismyvehicle.R;
+import com.wherismyvehicle.whereismyvehicle.Presenters.SightingsFragmentPresenter;
 
 public class SightingsFragment extends Fragment {
     @Nullable
