@@ -23,21 +23,21 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener(){
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment selectedFragment = null;
-            switch(item.getItemId()){
-                case R.id.nav_profile:
-                    selectedFragment = new ProfileFragment();
+        Fragment selectedFragment = null;
+        switch(item.getItemId()){
+            case R.id.nav_profile:
+                selectedFragment = new ProfileFragment();
+                break;
+            case R.id.nav_sightings:
+                selectedFragment = new SightingsFragment();
                     break;
-                case R.id.nav_sightings:
-                    selectedFragment = new SightingsFragment();
-                        break;
-                case R.id.nav_vehicles:
-                    selectedFragment = new VehiclesFragment();
-                    break;
-            }
+            case R.id.nav_vehicles:
+                selectedFragment = new VehiclesFragment();
+                break;
+        }
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
-            return true;
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+        return true;
         }
     };
 }
