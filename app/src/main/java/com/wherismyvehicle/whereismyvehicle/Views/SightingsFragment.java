@@ -1,5 +1,6 @@
 package com.wherismyvehicle.whereismyvehicle.Views;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -28,6 +29,11 @@ public class SightingsFragment extends Fragment implements SightingsFragmentPres
         presenter.LoadSightings();
 
         return inflater.inflate(R.layout.fragment_sightings, container, false);
+    }
+
+    @Override
+    public Context GetContext() {
+        return getActivity();
     }
 
     @Override

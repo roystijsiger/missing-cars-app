@@ -28,8 +28,6 @@ public class VehiclesFragment extends Fragment implements VehiclesFragmentPresen
         super.onCreate(savedInstanceState);
 
         presenter = new VehiclesFragmentPresenter(this);
-
-
     }
 
     private void setMissingVehicles(){
