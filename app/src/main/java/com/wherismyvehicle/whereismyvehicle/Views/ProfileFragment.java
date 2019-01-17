@@ -8,9 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.wherismyvehicle.whereismyvehicle.R;
+import com.wherismyvehicle.whereismyvehicle.Presenters.ProfileFragmentPresenter;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements ProfileFragmentPresenter.View {
+
+    private ProfileFragmentPresenter presenter;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        presenter = new ProfileFragmentPresenter(this);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

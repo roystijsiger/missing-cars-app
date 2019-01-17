@@ -8,9 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.wherismyvehicle.whereismyvehicle.R;
+import com.wherismyvehicle.whereismyvehicle.Presenters.SightingsFragmentPresenter;
 
-public class SightingsFragment extends Fragment {
+public class SightingsFragment extends Fragment implements SightingsFragmentPresenter.View {
+    private SightingsFragmentPresenter presenter;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        this.presenter = new SightingsFragmentPresenter(this);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
