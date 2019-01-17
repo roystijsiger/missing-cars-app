@@ -1,4 +1,4 @@
-package com.wherismyvehicle.whereismyvehicle;
+package com.wherismyvehicle.whereismyvehicle.Views;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,10 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class VehiclesFragment extends Fragment {
+import com.wherismyvehicle.whereismyvehicle.R;
+
+public class SightingsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_vehicles, container, false);
+        return inflater.inflate(R.layout.fragment_sightings, container, false);
     }
 }
