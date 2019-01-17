@@ -21,7 +21,8 @@ public class SightingsFragmentPresenter {
     }
 
     public void LoadSightings() {
-        DataPersistenceTask<ArrayList<Sighting>> sightings = dataPersistence.FetchAll();
+        // TODO: Fetch sightings
+        //DataPersistenceTask<ArrayList<Sighting>> sightings = dataPersistence.FetchAll();
 
         // TODO: Handle event
         //sightings.onAddEventHandler();
