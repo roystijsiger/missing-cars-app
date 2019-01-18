@@ -1,13 +1,16 @@
 package com.wherismyvehicle.whereismyvehicle.Data;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public interface DataPersistence <T> {
-    DataPersistenceTask<T> Fetch(Object id);
-    DataPersistenceTask<ArrayList<T>> FetchAll();
-    DataPersistenceTask<T> Insert(T object);
-    DataPersistenceTask<T> Insert(ArrayList<T> object);
-    DataPersistenceTask<T> Update(T object);
-    DataPersistenceTask Delete(T object);
-    DataPersistenceTask DeleteAll();
+
+
+    DataPersistenceAction<T> Fetch(Object id);
+    DataPersistenceAction<ArrayList<T>> FetchAll();
+    DataPersistenceAction<T> Insert(T object);
+    DataPersistenceAction<ArrayList<T>> Insert(ArrayList<T> object);
+    DataPersistenceAction<T> Update(T object);
+    DataPersistenceAction Delete(Object id);
+    DataPersistenceAction DeleteAll();
 }

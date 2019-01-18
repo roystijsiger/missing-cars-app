@@ -1,5 +1,6 @@
 package com.wherismyvehicle.whereismyvehicle.Data;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import okhttp3.Call;
@@ -10,31 +11,29 @@ import okhttp3.Response;
 public class WebServiceDataPersistence<T> implements DataPersistence<T> {
 
     private final OkHttpClient client;
+    private final Class objectClass;
+    private final String baseUrl;
 
-    public WebServiceDataPersistence() {
+    public WebServiceDataPersistence(Class objectClass) {
         this.client = new OkHttpClient();
+        this.objectClass = objectClass;
+        this.baseUrl = "http://whereismyvehicle.azurewebsites.net/"
+                .concat(objectClass.getSimpleName().toLowerCase())
+                .concat("s");
     }
 
     @Override
-    public DataPersistenceTask<T> Fetch(Object id) {
+    public DataPersistenceAction<T> Fetch(Object id) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public DataPersistenceTask<ArrayList<T>> FetchAll() {
+    public DataPersistenceAction<ArrayList<T>> FetchAll() {
         Request request = new Request.Builder()
-                .url("http://publicobject.com/helloworld.txt")
+                .url(baseUrl)
                 .build();
 
-        DataPersistenceHttpTask task = new DataPersistenceHttpTask() {
-            @Override
-            public void onResponse(Call call, Response response) {
-                // TODO: https://github.com/square/okhttp/wiki/Recipes#parse-a-json-response-with-moshi
-                // Then call result with result object
-
-                // onResult(new Object());
-            }
-        };
+        DataPersistenceHttpAction task = new DataPersistenceHttpAction();
 
         client.newCall(request).enqueue(task);
 
@@ -42,27 +41,27 @@ public class WebServiceDataPersistence<T> implements DataPersistence<T> {
     }
 
     @Override
-    public DataPersistenceTask<T> Insert(T object) {
+    public DataPersistenceAction<T> Insert(T object) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public DataPersistenceTask<T> Insert(ArrayList<T> object) {
+    public DataPersistenceAction<ArrayList<T>> Insert(ArrayList<T> object) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public DataPersistenceTask<T> Update(T object) {
+    public DataPersistenceAction<T> Update(T object) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public DataPersistenceTask Delete(T object) {
+    public DataPersistenceAction Delete(Object id) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public DataPersistenceTask DeleteAll() {
+    public DataPersistenceAction DeleteAll() {
         throw new UnsupportedOperationException("Deleting all entities is not supported on the webservice");
     }
 }
