@@ -1,11 +1,13 @@
 package com.wherismyvehicle.whereismyvehicle.Presenters;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.wherismyvehicle.whereismyvehicle.Data.CachedDataPersistence;
 import com.wherismyvehicle.whereismyvehicle.Data.DataPersistence;
 import com.wherismyvehicle.whereismyvehicle.Data.DataPersistenceEventHandler;
 import com.wherismyvehicle.whereismyvehicle.Models.Vehicle;
+import com.wherismyvehicle.whereismyvehicle.Views.NewVehicleActivity;
 
 import java.util.ArrayList;
 
@@ -29,6 +31,11 @@ public class VehiclesFragmentPresenter {
             }
         } );
 
+    }
+
+    public void openNewVehicleForm(){
+        Intent intent = new Intent(view.getContext(), NewVehicleActivity.class);
+        view.getContext().startActivity(intent);
     }
 
      public interface View {
