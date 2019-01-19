@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         Fragment selectedFragment = null;
         switch(item.getItemId()){
             case R.id.nav_profile:
-                // TODO: Check logged in. Show Register, Login or Profile fragment
                 selectedFragment = new ProfileFragment();
                 break;
             case R.id.nav_sightings:
