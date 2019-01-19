@@ -27,6 +27,13 @@ public class SightingsFragmentPresenter {
                 view.ShowSightings(result);
             }
         });
+
+        dataPersistence.Fetch(1).AddHandler(new DataPersistenceEventHandler<Sighting>() {
+            @Override
+            public void OnResult(Sighting result) {
+                System.out.println(1);
+            }
+        });
     }
 
     public interface View {
