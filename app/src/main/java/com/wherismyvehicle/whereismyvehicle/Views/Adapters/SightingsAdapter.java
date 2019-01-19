@@ -30,8 +30,9 @@ public class SightingsAdapter extends ArrayAdapter<Sighting> {
         TextView licensePlate = convertView.findViewById(R.id.txt_vehicle_license);
         ImageView photo = convertView.findViewById(R.id.img_vehicle);
 
-        location.setText(sighting.getLocation().toString());
-        licensePlate.setText(sighting.getVehicle().getLicencePlate());
+        //location.setText(sighting.getLocation().toString());
+        location.setText(Double.toString(sighting.getLocation().getLatitude()) + Double.toString(sighting.getLocation().getLongitude()));
+        licensePlate.setText(sighting.getVehicle().getLicensePlate());
         // TODO: 1/19/2019 image source has to be changed and display the position in google maps or at least give a location name(street name, city etc.) ;
         return convertView;
     }
