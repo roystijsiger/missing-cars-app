@@ -10,6 +10,7 @@ import com.wherismyvehicle.whereismyvehicle.Models.Vehicle;
 import com.wherismyvehicle.whereismyvehicle.Views.NewVehicleActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class VehiclesFragmentPresenter {
     private ArrayList<Vehicle> vehicles;
@@ -19,15 +20,15 @@ public class VehiclesFragmentPresenter {
     public VehiclesFragmentPresenter(View view) {
         this.view = view;
 
-        dataPersistence = new CachedDataPersistence<>(view.getContext(), Vehicle.class);
+        dataPersistence = new CachedDataPersistence<>(view.getContext(), "vehicles");
         vehicles = new ArrayList<>();
     }
 
     public void loadVehicles(){
-        dataPersistence.FetchAll().AddHandler(new DataPersistenceEventHandler<ArrayList<Vehicle>>(){
+        dataPersistence.FetchAll(Vehicle[].class).AddHandler(new DataPersistenceEventHandler<Vehicle[]>(){
             @Override
-            public void OnResult(ArrayList<Vehicle> result) {
-                view.showVehicles(result);
+            public void OnResult(Vehicle[] result) {
+                view.showVehicles(new ArrayList<>(Arrays.asList(result)));
             }
         } );
 

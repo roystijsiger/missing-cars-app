@@ -8,6 +8,7 @@ import com.wherismyvehicle.whereismyvehicle.Data.DataPersistenceEventHandler;
 import com.wherismyvehicle.whereismyvehicle.Models.Sighting;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SightingsFragmentPresenter {
     private ArrayList<Sighting> sightings;
@@ -17,18 +18,18 @@ public class SightingsFragmentPresenter {
     public SightingsFragmentPresenter(View view) {
         this.view = view;
 
-        dataPersistence = new CachedDataPersistence<>(view.GetContext(), Sighting.class);
+        dataPersistence = new CachedDataPersistence<>(view.GetContext(), "sightings");
     }
 
     public void LoadSightings() {
-        dataPersistence.FetchAll().AddHandler(new DataPersistenceEventHandler<ArrayList<Sighting>>() {
+        dataPersistence.FetchAll(Sighting[].class).AddHandler(new DataPersistenceEventHandler<Sighting[]>() {
             @Override
-            public void OnResult(ArrayList<Sighting> result) {
-                view.ShowSightings(result);
+            public void OnResult(Sighting[] result) {
+                view.ShowSightings(new ArrayList<>(Arrays.asList(result)));
             }
         });
 
-        dataPersistence.Fetch(1).AddHandler(new DataPersistenceEventHandler<Sighting>() {
+        dataPersistence.Fetch(Sighting.class, 1).AddHandler(new DataPersistenceEventHandler<Sighting>() {
             @Override
             public void OnResult(Sighting result) {
                 System.out.println(1);
