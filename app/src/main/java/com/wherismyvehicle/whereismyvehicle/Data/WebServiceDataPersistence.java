@@ -1,12 +1,9 @@
 package com.wherismyvehicle.whereismyvehicle.Data;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 
 public class WebServiceDataPersistence<T> implements DataPersistence<T> {
 
