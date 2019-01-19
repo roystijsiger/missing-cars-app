@@ -20,7 +20,7 @@
     <EditText
         android:id="@+id/txt_vehicle_license"
         android:layout_width="match_parent"
-        android:layout_height="30sp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/lbl_vehicle_license"/>
 
     <TextView
@@ -33,7 +33,7 @@
     <Spinner
         android:id="@+id/spinner_vehicle_type"
         android:layout_width="match_parent"
-        android:layout_height="30sp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/lbl_vehicle_type"></Spinner>
 
 </RelativeLayout>
