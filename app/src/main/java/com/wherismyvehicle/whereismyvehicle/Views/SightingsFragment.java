@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class SightingsFragment extends Fragment implements SightingsFragmentPresenter.View {
     private SightingsFragmentPresenter presenter;
     private ListView listViewSightings;
-
+    private View fragmentView;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +29,11 @@ public class SightingsFragment extends Fragment implements SightingsFragmentPres
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.listViewSightings = getView().findViewById(R.id.listview_sightings);
+        this.fragmentView = inflater.inflate(R.layout.fragment_sightings, container, false);
+        listViewSightings = fragmentView.findViewById(R.id.listview_sightings);
         presenter.LoadSightings();
 
-        return inflater.inflate(R.layout.fragment_sightings, container, false);
+        return fragmentView;
     }
 
     @Override
