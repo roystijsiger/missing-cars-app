@@ -24,7 +24,15 @@ public class WebServiceDataPersistence<T> implements DataPersistence<T> {
 
     @Override
     public DataPersistenceAction<T> Fetch(Object id) {
-        throw new UnsupportedOperationException();
+        Request request = new Request.Builder()
+                .url(baseUrl.concat("/").concat(id.toString()))
+                .build();
+
+        DataPersistenceHttpAction task = new DataPersistenceHttpAction();
+
+        client.newCall(request).enqueue(task);
+
+        return task;
     }
 
     @Override
