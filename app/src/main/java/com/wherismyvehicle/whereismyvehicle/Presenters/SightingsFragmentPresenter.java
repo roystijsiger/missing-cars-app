@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class SightingsFragmentPresenter {
-    private ArrayList<Sighting> sightings;
     private View view;
     private DataPersistence<Sighting> dataPersistence;
 

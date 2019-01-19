@@ -27,6 +27,8 @@ public class WebServiceDataPersistence<T> implements DataPersistence<T> {
 
     @Override
     public DataPersistenceAction<T> Fetch(Class serializationClass, Object id) {
+        checkConnection();
+
         Request request = createRequest(baseUrl.concat("/").concat(id.toString()))
             .build();
 
@@ -117,9 +119,14 @@ public class WebServiceDataPersistence<T> implements DataPersistence<T> {
             .addHeader("Authentication", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZ0BleGFtcGxlLmNvbSIsIm5iZiI6MTU0NzkzNjQzMywiZXhwIjoxNTc5NDcyNDMzLCJpYXQiOjE1NDc5MzY0MzN9.1YINBnLk4S_kv434UjCLIogrDNAMqAOgczhReytz2Os");
     }
 
+    private void checkConnection() {
+        if(!connectionAvailable()){
+            throw new ConnectionUnavailableException("Device is not connected to the internet");
+        }
+    }
+
     private boolean connectionAvailable(){
         ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
-
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
 
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
