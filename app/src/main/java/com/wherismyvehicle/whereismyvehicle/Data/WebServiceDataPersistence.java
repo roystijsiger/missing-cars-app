@@ -17,8 +17,10 @@ public class WebServiceDataPersistence<T> implements DataPersistence<T> {
 
     private final OkHttpClient client;
     private final String baseUrl;
+    private final Context context;
 
-    public WebServiceDataPersistence(String endpoint) {
+    public WebServiceDataPersistence(Context context, String endpoint) {
+        this.context = context;
         this.client = new OkHttpClient();
         this.baseUrl = "http://whereismyvehicle.azurewebsites.net/".concat(endpoint);
     }
