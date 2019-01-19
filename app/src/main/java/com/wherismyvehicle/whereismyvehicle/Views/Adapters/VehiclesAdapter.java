@@ -1,16 +1,16 @@
 package com.wherismyvehicle.whereismyvehicle.Views.Adapters;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
+        import android.content.Context;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.ArrayAdapter;
+        import android.widget.TextView;
 
-import com.wherismyvehicle.whereismyvehicle.Models.Vehicle;
-import com.wherismyvehicle.whereismyvehicle.Views.R;
+        import com.wherismyvehicle.whereismyvehicle.Models.Vehicle;
+        import com.wherismyvehicle.whereismyvehicle.Views.R;
 
-import java.util.ArrayList;
+        import java.util.ArrayList;
 
 public class VehiclesAdapter extends ArrayAdapter<Vehicle> {
     public VehiclesAdapter(Context context, ArrayList<Vehicle> vehicles) {
@@ -32,7 +32,7 @@ public class VehiclesAdapter extends ArrayAdapter<Vehicle> {
         vehicleBrand.setText(vehicle.getBrand());
         vehicleColor.setText(vehicle.getColor());
         vehicleLicense.setText(vehicle.getLicencePlate());
-        vehicleType.setText(vehicle.getType().toString());
+//        vehicleType.setText(vehicle.getType().toString());
 
         return convertView;
     }

@@ -1,31 +1,25 @@
 package com.wherismyvehicle.whereismyvehicle.Data;
 
-import java.util.ArrayList;
-
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
 public class WebServiceDataPersistence<T> implements DataPersistence<T> {
 
     private final OkHttpClient client;
-    private final Class objectClass;
     private final String baseUrl;
 
-    public WebServiceDataPersistence(Class objectClass) {
+    public WebServiceDataPersistence(String endpoint) {
         this.client = new OkHttpClient();
-        this.objectClass = objectClass;
-        this.baseUrl = "http://whereismyvehicle.azurewebsites.net/"
-                .concat(objectClass.getSimpleName().toLowerCase())
-                .concat("s");
+        this.baseUrl = "http://whereismyvehicle.azurewebsites.net/".concat(endpoint);
     }
 
     @Override
-    public DataPersistenceAction<T> Fetch(Object id) {
+    public DataPersistenceAction<T> Fetch(Class serializationClass, Object id) {
         Request request = new Request.Builder()
                 .url(baseUrl.concat("/").concat(id.toString()))
                 .build();
 
-        DataPersistenceHttpAction task = new DataPersistenceHttpAction();
+        DataPersistenceHttpAction task = new DataPersistenceHttpAction(serializationClass);
 
         client.newCall(request).enqueue(task);
 
@@ -33,12 +27,12 @@ public class WebServiceDataPersistence<T> implements DataPersistence<T> {
     }
 
     @Override
-    public DataPersistenceAction<ArrayList<T>> FetchAll() {
+    public DataPersistenceAction<T[]> FetchAll(Class serializationClass) {
         Request request = new Request.Builder()
                 .url(baseUrl)
                 .build();
 
-        DataPersistenceHttpAction task = new DataPersistenceHttpAction();
+        DataPersistenceHttpAction task = new DataPersistenceHttpAction(serializationClass);
 
         client.newCall(request).enqueue(task);
 
@@ -46,27 +40,27 @@ public class WebServiceDataPersistence<T> implements DataPersistence<T> {
     }
 
     @Override
-    public DataPersistenceAction<T> Insert(T object) {
+    public DataPersistenceAction<T> Insert(Class serializationClass, T object) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public DataPersistenceAction<ArrayList<T>> Insert(ArrayList<T> object) {
+    public DataPersistenceAction<T[]> Insert(Class serializationClass, T[] object) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public DataPersistenceAction<T> Update(T object) {
+    public DataPersistenceAction<T> Update(Class serializationClass, T object) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public DataPersistenceAction Delete(Object id) {
+    public DataPersistenceAction Delete(Class serializationClass, Object id) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public DataPersistenceAction DeleteAll() {
+    public DataPersistenceAction DeleteAll(Class serializationClass) {
         throw new UnsupportedOperationException("Deleting all entities is not supported on the webservice");
     }
 }
