@@ -3,9 +3,9 @@ package com.wherismyvehicle.whereismyvehicle.Presenters;
 import android.content.Context;
 import android.content.Intent;
 
-import com.wherismyvehicle.whereismyvehicle.Data.CachedDataPersistence;
 import com.wherismyvehicle.whereismyvehicle.Data.DataPersistence;
-import com.wherismyvehicle.whereismyvehicle.Data.DataPersistenceEventHandler;
+import com.wherismyvehicle.whereismyvehicle.Data.DataPersistenceActionEventHandler;
+import com.wherismyvehicle.whereismyvehicle.Data.WebServiceDataPersistence;
 import com.wherismyvehicle.whereismyvehicle.Models.Vehicle;
 import com.wherismyvehicle.whereismyvehicle.Views.NewVehicleActivity;
 
@@ -20,18 +20,17 @@ public class VehiclesFragmentPresenter {
     public VehiclesFragmentPresenter(View view) {
         this.view = view;
 
-        dataPersistence = new CachedDataPersistence<>(view.getContext(), "vehicles");
+        dataPersistence = new WebServiceDataPersistence<>(view.getContext(), "vehicles");
         vehicles = new ArrayList<>();
     }
 
     public void loadVehicles(){
-        dataPersistence.FetchAll(Vehicle[].class).AddHandler(new DataPersistenceEventHandler<Vehicle[]>(){
+        dataPersistence.FetchAll(Vehicle[].class).AddHandler(new DataPersistenceActionEventHandler<Vehicle[]>(){
             @Override
             public void OnResult(Vehicle[] result) {
                 view.showVehicles(new ArrayList<>(Arrays.asList(result)));
             }
         } );
-
     }
 
     public void openNewVehicleForm(){
@@ -39,7 +38,7 @@ public class VehiclesFragmentPresenter {
         view.getContext().startActivity(intent);
     }
 
-     public interface View {
+    public interface View {
         void showVehicles(ArrayList<Vehicle> vehicles);
         Context getContext();
     }
