@@ -1,26 +1,31 @@
 package com.wherismyvehicle.whereismyvehicle.Models;
 
 import android.location.Location;
+import android.util.Log;
 
 import java.util.ArrayList;
 
 public class Vehicle {
     private int id;
-    private VehicleType type;
+    private String type;
     private String brand;
     private String color;
-    private String licencePlate;
+    private String licensePlate;
+    private double lastKnownLongitude;
+    private double lastKnownLatitude;
     private Location location;
 
     private ArrayList<Sighting> sightings;
 
-    public Vehicle(int id, VehicleType type, String brand, String color, String licencePlate, Location location, ArrayList<Sighting> sightings) {
+    public Vehicle(int id, String type, String brand, String color, String licensePlate, double lastKnownLongitude, double lastKnownLatitude, ArrayList<Sighting> sightings) {
         this.id = id;
         this.type = type;
         this.brand = brand;
         this.color = color;
-        this.licencePlate = licencePlate;
-        this.location = location;
+        this.licensePlate = licensePlate;
+        this.lastKnownLatitude = lastKnownLatitude;
+        this.lastKnownLongitude = lastKnownLongitude;
+
         this.sightings = sightings;
     }
 
@@ -28,11 +33,11 @@ public class Vehicle {
         return id;
     }
 
-    public VehicleType getType() {
+    public String getType() {
         return type;
     }
 
-    public Vehicle setType(VehicleType type) {
+    public Vehicle setType(String type) {
         this.type = type;
         return this;
     }
@@ -46,16 +51,21 @@ public class Vehicle {
         return this;
     }
 
-    public String getLicencePlate() {
-        return licencePlate;
+    public String getLicensePlate() {
+        return licensePlate;
     }
 
-    public Vehicle setLicencePlate(String licencePlate) {
-        this.licencePlate = licencePlate;
+    public Vehicle setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
         return this;
     }
 
     public Location getLocation() {
+        Location location = new Location("Dummy proved");
+        Log.i("Longitude", "" + lastKnownLongitude);
+        Log.i("Latitude", "" + lastKnownLatitude);
+        location.setLatitude(lastKnownLatitude);
+        location.setLongitude(lastKnownLongitude);
         return location;
     }
 
