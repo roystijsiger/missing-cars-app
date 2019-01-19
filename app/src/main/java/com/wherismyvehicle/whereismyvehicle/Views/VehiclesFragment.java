@@ -54,7 +54,7 @@ public class VehiclesFragment extends Fragment implements VehiclesFragmentPresen
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         fragmentView = inflater.inflate(R.layout.fragment_vehicles, container, false);
         listViewVehicles = fragmentView.findViewById(R.id.listview_vehicles);
-        //presenter.loadVehicles();
+        presenter.loadVehicles();
 
         fragmentView.findViewById(R.id.img_add_vehicle).setOnClickListener(new View.OnClickListener() {
             @Override
