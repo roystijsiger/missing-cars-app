@@ -1,5 +1,10 @@
 package com.wherismyvehicle.whereismyvehicle.Presenters;
 
+import android.content.Context;
+
+import com.wherismyvehicle.whereismyvehicle.Data.CachedDataPersistence;
+import com.wherismyvehicle.whereismyvehicle.Data.DataPersistence;
+import com.wherismyvehicle.whereismyvehicle.Data.DataPersistenceEventHandler;
 import com.wherismyvehicle.whereismyvehicle.Models.Vehicle;
 
 import java.util.ArrayList;
@@ -7,15 +12,27 @@ import java.util.ArrayList;
 public class VehiclesFragmentPresenter {
     private ArrayList<Vehicle> vehicles;
     private View view;
+    private DataPersistence<Vehicle> dataPersistence;
 
     public VehiclesFragmentPresenter(View view) {
         this.view = view;
 
-        // TODO: Get vehicles from api/storage
-        this.vehicles = new ArrayList<>();
+        dataPersistence = new CachedDataPersistence<>(view.getContext(), Vehicle.class);
+        vehicles = new ArrayList<>();
     }
 
-    public interface View {
+    public void loadVehicles(){
+        dataPersistence.FetchAll().AddHandler(new DataPersistenceEventHandler<ArrayList<Vehicle>>(){
+            @Override
+            public void OnResult(ArrayList<Vehicle> result) {
+                view.showVehicles(result);
+            }
+        } );
 
+    }
+
+     public interface View {
+        void showVehicles(ArrayList<Vehicle> vehicles);
+        Context getContext();
     }
 }

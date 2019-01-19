@@ -1,5 +1,6 @@
 package com.wherismyvehicle.whereismyvehicle.Views;
 
+import android.content.Context;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,37 +22,40 @@ import java.util.ArrayList;
 public class VehiclesFragment extends Fragment implements VehiclesFragmentPresenter.View {
     private VehiclesFragmentPresenter presenter;
     private View fragmentView;
-    private ListView missingVehicles;
+    private ListView listViewVehicles;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        presenter = new VehiclesFragmentPresenter(this);
+        this.presenter = new VehiclesFragmentPresenter(this);
     }
 
-    private void setMissingVehicles(){
-        ArrayList<Vehicle> arrayList = new ArrayList<>();
-        Vehicle vehicle = new Vehicle(1, VehicleType.Car,"Audi","Purple","28-28-ab", new Location("service Provider"),new ArrayList<Sighting>());
-        arrayList.add(vehicle);
+    //show vehicles in list
+    public void showVehicles(final ArrayList<Vehicle> vehicles){
+        //create a new adapter to fill the arrayList.
+        getActivity().runOnUiThread(new Runnable(){
+            @Override
+            public void run(){
+                VehiclesAdapter vehicleAdapter = new VehiclesAdapter(getActivity(), vehicles);
+                listViewVehicles.setAdapter(vehicleAdapter);
+            }
+        });
 
-        Vehicle vehicle2 = new Vehicle(2, VehicleType.Bicycle,"Mercedes","Green","none", new Location("service Provider"),new ArrayList<Sighting>());
-        arrayList.add(vehicle2);
-
-        Vehicle vehicle3 = new Vehicle(3, VehicleType.MotorCycle,"Volvo","Purple","28-ab-ab", new Location("service Provider"),new ArrayList<Sighting>());
-        arrayList.add(vehicle3);
-
-        VehiclesAdapter vehicleAdapter = new VehiclesAdapter(getActivity(), arrayList);
-        this.missingVehicles.setAdapter(vehicleAdapter);
     }
+
+    public Context getContext(){
+        return getActivity();
+    }
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.fragmentView = inflater.inflate(R.layout.fragment_vehicles, container, false);
-        this.missingVehicles = this.fragmentView.findViewById(R.id.listview_vehicles);
+        fragmentView = inflater.inflate(R.layout.fragment_vehicles, container, false);
+        listViewVehicles = fragmentView.findViewById(R.id.listview_vehicles);
+        presenter.loadVehicles();
 
-        this.setMissingVehicles();
         return this.fragmentView;
     }
 }
