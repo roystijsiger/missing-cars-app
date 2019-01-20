@@ -6,9 +6,6 @@
     tools:context=".RegisterFragment"
     android:layout_margin="10dp">
 
-
-
-
     <EditText
         android:id="@+id/txt_email"
         android:layout_width="match_parent"
@@ -51,6 +48,10 @@
         android:layout_below="@id/btn_register"
         android:text="Login" />
 
-
-
+    <TextView
+        android:id="@+id/lbl_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ff0000"
+        android:layout_below="@id/btn_login" />
 </RelativeLayout>

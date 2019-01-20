@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.wherismyvehicle.whereismyvehicle.Presenters.RegisterFragmentPresenter;
 
@@ -92,5 +93,11 @@ public class RegisterFragment extends Fragment implements RegisterFragmentPresen
         passwordEditText.setText(null);
         passwordConfirmEditText.setText(null);
         onClose.run();
+    }
+
+    @Override
+    public void onRegisteredFailed() {
+        String toastMsg = String.format("Error: %s", "Registration failed. Do you already have an account?");
+        Toast.makeText(getActivity(), toastMsg, Toast.LENGTH_LONG).show();
     }
 }

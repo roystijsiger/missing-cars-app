@@ -11,10 +11,16 @@ public class RegisterFragmentPresenter {
     public RegisterFragmentPresenter(RegisterFragment registerFragment) {
         this.fragment = registerFragment;
 
-        AuthenticationState.getInstance().addOnUserChangedHandler(new Runnable() {
+        AuthenticationState.getInstance().setOnRegisteredHandler(new Runnable() {
             @Override
             public void run() {
                 fragment.onRegistered();
+            }
+        });
+        AuthenticationState.getInstance().setOnRegistrationFailedHandler(new Runnable() {
+            @Override
+            public void run() {
+                fragment.onRegisteredFailed();
             }
         });
     }
@@ -35,6 +41,8 @@ public class RegisterFragmentPresenter {
             return;
         }
 
+        AuthenticationState.getInstance().logout();
+
         AuthenticationState.getInstance().register(email, password);
     }
 
@@ -43,5 +51,7 @@ public class RegisterFragmentPresenter {
         void failedPasswordRequirements();
         void failedPasswordConfirm();
         void onRegistered();
+        void onRegisteredFailed();
+
     }
 }
