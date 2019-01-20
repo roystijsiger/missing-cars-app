@@ -1,30 +1,63 @@
 package com.wherismyvehicle.whereismyvehicle.Data.Authentication;
 
+import android.content.Context;
+
+import com.wherismyvehicle.whereismyvehicle.Models.User;
+import com.wherismyvehicle.whereismyvehicle.Views.MainActivity;
+
+import java.util.ArrayList;
+
 // Singleton
 public class AuthenticationState {
-    private boolean authenticated;
-    private String token;
-    private static final AuthenticationState instance = new AuthenticationState();
+    private AuthenticationService authenticationService;
+    private User user;
+
+    private static AuthenticationState instance;
+    private ArrayList<Runnable> onUserChangedHandlers = new ArrayList<>();
+
+    public AuthenticationState(Context context) {
+        authenticationService = new AuthenticationService(context);
+    }
 
     public static AuthenticationState getInstance() {
         return instance;
     }
 
+    public static void instantiate(Context context) {
+        instance = new AuthenticationState(context);
+    }
+
     public boolean isAuthenticated() {
-        return authenticated;
+        return user != null;
     }
 
     public String getToken() {
-        return token;
+        if(user == null) return null;
+
+        return user.getToken();
     }
 
-    public void authenticate(String token){
-        this.token = token;
-        this.authenticated = true;
+    public void login(String username, String password){
+        this.authenticationService.authenticate(username, password);
+    }
+
+    public void register(String email, String password) {
+        this.authenticationService.register(email, password);
     }
 
     public void logout(){
-        authenticated = false;
-        token = null;
+        user = null;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+
+        for (Runnable runnable: onUserChangedHandlers) {
+            runnable.run();
+        }
+    }
+
+    public void addOnUserChangedHandler(Runnable runnable){
+        this.onUserChangedHandlers.add(runnable);
     }
 }

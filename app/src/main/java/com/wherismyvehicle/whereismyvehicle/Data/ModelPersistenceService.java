@@ -12,19 +12,11 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 
 public class ModelPersistenceService<T> extends WebService implements DataPersistence<T> {
-
-    public static final MediaType JSON_CONTENT_TYPE = MediaType.parse("application/json; charset=utf-8");
-
-    private final OkHttpClient client;
     private final String baseUrl;
-    private final Context context;
 
     public ModelPersistenceService(Context context, String endpoint) {
         super(context);
-
-        this.context = context;
-        this.client = new OkHttpClient();
-        this.baseUrl = "http://whereismyvehicle.azurewebsites.net/".concat(endpoint);
+        this.baseUrl = endpoint;
     }
 
     @Override
@@ -113,11 +105,5 @@ public class ModelPersistenceService<T> extends WebService implements DataPersis
     @Override
     public DataPersistenceAction DeleteAll(Class serializationClass) {
         throw new UnsupportedOperationException("Deleting all entities is not supported on the webservice");
-    }
-
-    private Request.Builder createRequest(String endpoint) {
-        return new Request.Builder()
-            .url(endpoint)
-            .addHeader("Authentication", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZ0BleGFtcGxlLmNvbSIsIm5iZiI6MTU0NzkzNjQzMywiZXhwIjoxNTc5NDcyNDMzLCJpYXQiOjE1NDc5MzY0MzN9.1YINBnLk4S_kv434UjCLIogrDNAMqAOgczhReytz2Os");
     }
 }

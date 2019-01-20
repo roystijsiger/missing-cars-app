@@ -32,7 +32,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO: Get token and get token
-                AuthenticationState.getInstance().authenticate(null);
+
 
                 onLoggedIn.run();
             }

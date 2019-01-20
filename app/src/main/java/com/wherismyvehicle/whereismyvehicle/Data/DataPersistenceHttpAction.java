@@ -6,7 +6,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-class DataPersistenceHttpAction<T> extends DataPersistenceAction<T> implements Callback {
+public class DataPersistenceHttpAction<T> extends DataPersistenceAction<T> implements Callback {
 
     private Gson gson;
     private Class serializationClass;

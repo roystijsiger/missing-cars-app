@@ -2,8 +2,6 @@ package com.wherismyvehicle.whereismyvehicle.Presenters;
 
 import com.wherismyvehicle.whereismyvehicle.Models.User;
 
-import java.util.ArrayList;
-
 public class ProfileFragmentPresenter {
     private User user;
     private View view;
