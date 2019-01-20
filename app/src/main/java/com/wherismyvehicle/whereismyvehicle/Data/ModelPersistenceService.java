@@ -11,7 +11,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 
-public class ModelPersistenceService<T> implements DataPersistence<T> {
+public class ModelPersistenceService<T> extends WebService implements DataPersistence<T> {
 
     public static final MediaType JSON_CONTENT_TYPE = MediaType.parse("application/json; charset=utf-8");
 
@@ -20,6 +20,8 @@ public class ModelPersistenceService<T> implements DataPersistence<T> {
     private final Context context;
 
     public ModelPersistenceService(Context context, String endpoint) {
+        super(context);
+
         this.context = context;
         this.client = new OkHttpClient();
         this.baseUrl = "http://whereismyvehicle.azurewebsites.net/".concat(endpoint);
@@ -117,18 +119,5 @@ public class ModelPersistenceService<T> implements DataPersistence<T> {
         return new Request.Builder()
             .url(endpoint)
             .addHeader("Authentication", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZ0BleGFtcGxlLmNvbSIsIm5iZiI6MTU0NzkzNjQzMywiZXhwIjoxNTc5NDcyNDMzLCJpYXQiOjE1NDc5MzY0MzN9.1YINBnLk4S_kv434UjCLIogrDNAMqAOgczhReytz2Os");
-    }
-
-    private void checkConnection() {
-        if(!connectionAvailable()){
-            throw new ConnectionUnavailableException("Device is not connected to the internet");
-        }
-    }
-
-    private boolean connectionAvailable(){
-        ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-
-        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
     }
 }
