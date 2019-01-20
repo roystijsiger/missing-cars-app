@@ -24,6 +24,7 @@ public class LoginFragment extends Fragment implements LoginFragmentPresenter.Vi
     private EditText passwordEditText;
     private TextView errorTextView;
 
+
     public LoginFragment() {
 
     }
@@ -74,6 +75,10 @@ public class LoginFragment extends Fragment implements LoginFragmentPresenter.Vi
 
     public void setOnLogin(Runnable runnable) {
         onLogin = runnable;
+    }
+
+    public String getEmail(){
+        return emailEditText.getText().toString();
     }
 
     @Override

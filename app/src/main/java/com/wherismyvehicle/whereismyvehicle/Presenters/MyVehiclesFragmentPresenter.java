@@ -3,7 +3,7 @@ package com.wherismyvehicle.whereismyvehicle.Presenters;
 import android.content.Context;
 import android.content.Intent;
 
-import com.google.android.gms.maps.model.LatLng;
+import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationSingleton;
 import com.wherismyvehicle.whereismyvehicle.Data.DataPersistence;
 import com.wherismyvehicle.whereismyvehicle.Data.DataPersistenceActionEventHandler;
 import com.wherismyvehicle.whereismyvehicle.Data.ModelPersistenceService;
@@ -13,15 +13,15 @@ import com.wherismyvehicle.whereismyvehicle.Views.NewVehicleActivity;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class VehiclesFragmentPresenter {
+public class MyVehiclesFragmentPresenter {
     private ArrayList<Vehicle> vehicles;
     private View view;
     private DataPersistence<Vehicle> dataPersistence;
 
-    public VehiclesFragmentPresenter(View view) {
+    public MyVehiclesFragmentPresenter(View view) {
         this.view = view;
 
-        dataPersistence = new ModelPersistenceService<>(view.getContext(), "vehicles");
+        dataPersistence = new ModelPersistenceService<>(view.getContext(), String.format("vehicles?email=%s", AuthenticationSingleton.getInstance().getEmail()));
         vehicles = new ArrayList<>();
     }
 

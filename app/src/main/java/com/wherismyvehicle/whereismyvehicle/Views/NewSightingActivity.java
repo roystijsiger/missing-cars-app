@@ -84,7 +84,7 @@ public class NewSightingActivity extends AppCompatActivity implements NewSightin
         return vehicleId;
     }
 
-    public void showSuccessMessage(final String message){
+    public void showToastMsg(final String message){
 
         runOnUiThread(new Runnable() {
             @Override

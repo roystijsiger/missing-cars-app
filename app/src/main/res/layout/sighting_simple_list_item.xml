@@ -9,11 +9,11 @@
         android:text="License plate"
         android:textSize="20sp"/>
 
-    <TextView
-        android:id="@+id/txt_location_temp"
+    <ImageButton
+        android:id="@+id/btn_show_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Locatie"
+        android:src="@drawable/ic_gps_fixed"
         android:layout_below="@id/txt_vehicle_license"/>
 
     <ImageView
@@ -21,7 +21,7 @@
         android:layout_width="300sp"
         android:layout_height="200sp"
         android:layout_below="@id/txt_vehicle_license"
-        android:layout_toRightOf="@id/txt_location_temp"
+        android:layout_toRightOf="@id/btn_show_location"
         android:layout_alignParentRight="true"
         />
 </RelativeLayout>

@@ -33,6 +33,16 @@ public class AuthenticationSingleton {
         return getUser() != null;
     }
 
+    public String getEmail(){
+        User user = getUser();
+        if(user != null) {
+            return user.getEmail();
+        }
+        else{
+            return null;
+        }
+    }
+
     public String getToken() {
         User user = getUser();
 

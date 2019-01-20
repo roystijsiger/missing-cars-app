@@ -3,6 +3,8 @@ package com.wherismyvehicle.whereismyvehicle.Views.Adapters;
         import android.content.Context;
         import android.content.Intent;
         import android.net.Uri;
+        import android.support.v4.app.Fragment;
+        import android.support.v4.app.FragmentTransaction;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
@@ -10,16 +12,28 @@ package com.wherismyvehicle.whereismyvehicle.Views.Adapters;
         import android.widget.ImageButton;
         import android.widget.TextView;
 
+        import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationSingleton;
         import com.wherismyvehicle.whereismyvehicle.Models.Vehicle;
+        import com.wherismyvehicle.whereismyvehicle.Views.MyVehiclesFragment;
         import com.wherismyvehicle.whereismyvehicle.Views.NewSightingActivity;
         import com.wherismyvehicle.whereismyvehicle.Views.R;
+        import com.wherismyvehicle.whereismyvehicle.Views.SightingsActivity;
+        import com.wherismyvehicle.whereismyvehicle.Views.SightingsFragment;
 
         import java.util.ArrayList;
         import java.util.Locale;
 
 public class VehiclesAdapter extends ArrayAdapter<Vehicle> {
+    private boolean onlyMine;
+
     public VehiclesAdapter(Context context, ArrayList<Vehicle> vehicles) {
         super(context, 0, vehicles);
+    }
+
+    public VehiclesAdapter(Context context, ArrayList<Vehicle> vehicles, boolean onlyMine) {
+        super(context, 0, vehicles);
+
+        this.onlyMine = onlyMine;
     }
 
     public View getView(int position, View convertView, ViewGroup parent){
@@ -34,14 +48,25 @@ public class VehiclesAdapter extends ArrayAdapter<Vehicle> {
         TextView vehicleLicense = convertView.findViewById(R.id.txt_vehicle_license);
         TextView vehicleColor = convertView.findViewById(R.id.txt_vehicle_color);
         ImageButton showLocationButton = convertView.findViewById(R.id.btn_show_location);
-        ImageButton addSightingButton = convertView.findViewById(R.id.btn_add_sighting);
+        ImageButton sightingButton = convertView.findViewById(R.id.btn_sighting);
 
-        addSightingButton.setOnClickListener(new View.OnClickListener() {
+        if(onlyMine) {
+            showLocationButton.setVisibility(View.INVISIBLE);
+        }
+
+        sightingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), NewSightingActivity.class);
-                intent.putExtra("vehicle_id", vehicle.getId());
-                getContext().startActivity(intent);
+                if(onlyMine){
+                    Intent intent = new Intent(getContext(), SightingsActivity.class);
+                    intent.putExtra("vehicle_license", vehicle.getLicensePlate());
+                    getContext().startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(getContext(), NewSightingActivity.class);
+                    intent.putExtra("vehicle_id", vehicle.getId());
+                    getContext().startActivity(intent);
+                }
             }
         });
         showLocationButton.setOnClickListener(new View.OnClickListener() {

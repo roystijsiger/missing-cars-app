@@ -19,7 +19,6 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -33,7 +32,14 @@
         <activity android:name=".NewSightingActivity"  android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.NEW_VEHICLE" />
+                <action android:name="android.intent.action.NEW_SIGHTING" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SightingsActivity" android:configChanges="orientation"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.LIST_SIGHTINGS" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

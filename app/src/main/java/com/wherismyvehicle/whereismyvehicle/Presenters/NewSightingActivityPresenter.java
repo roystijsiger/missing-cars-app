@@ -20,27 +20,40 @@ public class NewSightingActivityPresenter {
     }
 
     public void addNewSightings(Location location, String photo){
+        if(isStringNullOrEmpty(photo) || location == null){
+            String message = "Either you haven't taken a picture or your location wasnt provided.";
+            view.showToastMsg(message);
+        }
+        else{
+            Sighting sighting = new Sighting(location, photo);
+            try {
+                dataPersistence.Insert(Sighting.class, sighting).AddHandler(new DataPersistenceActionEventHandler<Sighting>() {
+                    @Override
+                    public void OnResult(Sighting result) {
+                        String message = String.format("Sighting for vehicle %s has been posted", view.getVehicleId() );
+                        view.showToastMsg(message);
+                    }
+                });
+            }
+            catch(Exception e){
+                String message = String.format("De app kon geen sighting toevoegen probeer het op een later tijdstip nog eens.");
+                view.showToastMsg(message);
+            }
+        }
 
-        Sighting sighting = new Sighting(location, photo);
-        try {
-            dataPersistence.Insert(Sighting.class, sighting).AddHandler(new DataPersistenceActionEventHandler<Sighting>() {
-                @Override
-                public void OnResult(Sighting result) {
-                    String message = String.format("Sighting for vehicle %s has been posted", view.getVehicleId() );
-                    view.showSuccessMessage(message);
-                }
-            });
-        }
-        catch(Exception e){
-            // TODO: 1/20/2019 throw exception
-            
-        }
     }
 
     public interface View{
         Context getContext();
         int getVehicleId();
-        void showSuccessMessage(String message);
+        void showToastMsg(String message);
 
+    }
+
+    private boolean isStringNullOrEmpty(String string){
+        if(string == "" || string == null){
+            return true;
+        }
+        return false;
     }
 }
