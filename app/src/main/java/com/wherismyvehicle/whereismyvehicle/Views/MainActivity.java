@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
     private RegisterFragment registerFragment;
     private ProfileFragment profileFragment;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,21 +33,20 @@ public class MainActivity extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch(item.getItemId()){
+                case R.id.nav_profile:
+                    // TODO: Check auth first
+                    replaceFragment(registerFragment);
+                    break;
+                case R.id.nav_sightings:
+                    replaceFragment(sightingsFragment);
+                    break;
+                case R.id.nav_vehicles:
+                    replaceFragment(vehiclesFragment);
+                    break;
+            }
 
-                switch(item.getItemId()){
-                    case R.id.nav_profile:
-                        // TODO: Check auth first
-                        replaceFragment(registerFragment);
-                        break;
-                    case R.id.nav_sightings:
-                        replaceFragment(sightingsFragment);
-                        break;
-                    case R.id.nav_vehicles:
-                        replaceFragment(vehiclesFragment);
-                        break;
-                }
-
-                return true;
+            return true;
             }
         });
     }

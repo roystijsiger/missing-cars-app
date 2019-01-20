@@ -6,43 +6,29 @@
     tools:context=".RegisterFragment"
     android:layout_margin="10dp">
 
-    <TextView
-        android:id="@+id/lbl_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email"/>
+
 
     <EditText
         android:id="@+id/txt_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Email"
         android:layout_below="@id/lbl_email"/>
-
-    <TextView
-        android:id="@+id/lbl_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Password"
-        android:layout_below="@+id/txt_email"/>
 
     <EditText
         android:id="@+id/txt_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lbl_password"/>
+        android:hint="Password"
+        android:layout_below="@id/txt_email"/>
 
-    <TextView
-        android:id="@+id/lbl_password_confirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Confirm password"
-        android:layout_below="@+id/txt_password"/>
 
     <EditText
         android:id="@+id/txt_password_confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lbl_password_confirm"/>
+        android:hint="Confirm password"
+        android:layout_below="@id/txt_password"/>
 
     <Button
         android:id="@+id/btn_register"
