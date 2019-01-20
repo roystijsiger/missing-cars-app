@@ -6,9 +6,6 @@
     tools:context=".RegisterFragment"
     android:layout_margin="10dp">
 
-
-
-
     <EditText
         android:id="@+id/txt_email"
         android:layout_width="match_parent"
@@ -22,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
+        android:inputType="textPassword"
         android:layout_below="@id/txt_email"/>
 
 
@@ -30,6 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Confirm password"
+        android:inputType="textPassword"
         android:layout_below="@id/txt_password"/>
 
     <Button
@@ -38,8 +37,21 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_password_confirm"
         android:layout_marginTop="30dp"
+        android:backgroundTint="#008577"
+        android:textColor="#ffffff"
         android:text="Register" />
 
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_register"
+        android:text="Login" />
 
-
+    <TextView
+        android:id="@+id/lbl_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ff0000"
+        android:layout_below="@id/btn_login" />
 </RelativeLayout>

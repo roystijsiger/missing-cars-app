@@ -10,6 +10,7 @@
         android:id="@+id/txt_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
         android:hint="Email"/>
 
     <EditText
@@ -26,6 +27,23 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_password"
         android:layout_marginTop="3dp"
+        android:backgroundTint="#008577"
+        android:textColor="#ffffff"
         android:text="Login" />
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_login"
+        android:text="Register" />
+
+
+    <TextView
+        android:id="@+id/lbl_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ff0000"
+        android:layout_below="@id/btn_register" />
 
 </RelativeLayout>

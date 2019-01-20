@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationState;
+
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -13,7 +15,6 @@ public class WebService {
     protected final OkHttpClient client;
 
     private final Context context;
-    private String token;
     private String host;
 
     public WebService(Context context) {
@@ -26,16 +27,12 @@ public class WebService {
         this.client = new OkHttpClient();
     }
 
-    protected void setToken(String token){
-        this.token = "Bearer " + token;
-    }
-
     protected Request.Builder createRequest(String endpoint) {
         Request.Builder builder = new Request.Builder()
             .url(host.concat(endpoint));
 
-        if(token != null) {
-            builder = builder.addHeader("Authentication", token);
+        if(getToken() != null) {
+            builder = builder.addHeader("Authentication", getToken());
         }
 
         return builder;
@@ -48,5 +45,12 @@ public class WebService {
         if(activeNetwork == null || !activeNetwork.isConnectedOrConnecting()){
             throw new ConnectionUnavailableException("Device is not connected to the internet");
         }
+    }
+
+    private String getToken(){
+        String token = AuthenticationState.getInstance().getToken();
+        if(token == null) return null;
+
+        return "Bearer ".concat(token);
     }
 }
