@@ -68,7 +68,7 @@ public class NewVehicleActivity extends AppCompatActivity implements NewVehicleA
         });
 
 
-        //onclick event add vehcile
+        //onclick event add vehicle
         Button addVehicleButton = findViewById(R.id.btn_add_vehicle);
         addVehicleButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +85,11 @@ public class NewVehicleActivity extends AppCompatActivity implements NewVehicleA
                 TextView colorTextView = findViewById(R.id.txt_vehicle_color);
                 String color = colorTextView.getText().toString();
 
+
+
                 presenter.addNewVehicle(license,brand,type,color, locationSelected);
+
+
             }
         });
     }
@@ -94,15 +98,12 @@ public class NewVehicleActivity extends AppCompatActivity implements NewVehicleA
         return context;
     }
 
-    public void showToast(final String license){
+    public void showToast(final String message){
         final Activity activity = this;
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                String toastMsg = String.format("License %s has been reported as missing vehicle ", license);
-                Toast.makeText(activity, toastMsg, Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(activity, MainActivity.class);
-                activity.startActivity(intent);
+                Toast.makeText(activity, message, Toast.LENGTH_LONG).show();
             }
         });
 

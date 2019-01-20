@@ -33,6 +33,7 @@ public class NewSightingActivityPresenter {
         }
         catch(Exception e){
             // TODO: 1/20/2019 throw exception
+            
         }
     }
 
