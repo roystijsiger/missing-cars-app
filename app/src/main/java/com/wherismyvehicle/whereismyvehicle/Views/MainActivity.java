@@ -41,8 +41,13 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch(item.getItemId()){
                 case R.id.nav_profile:
-                    // TODO: Check auth first
-                    replaceFragment(loginFragment);
+                    if(AuthenticationSingleton.getInstance().isAuthenticated()) {
+                        replaceFragment(profileFragment);
+                    }
+                    else {
+                        replaceFragment(loginFragment);
+                    }
+
                     break;
                 case R.id.nav_sightings:
                     replaceFragment(sightingsFragment);
