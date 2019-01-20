@@ -15,29 +15,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new VehiclesFragment()).commit();
+        replaceFragment(new VehiclesFragment());
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener(){
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Fragment selectedFragment = null;
+
         switch(item.getItemId()){
             case R.id.nav_profile:
-                selectedFragment = new ProfileFragment();
+                replaceFragment(new RegisterFragment());
                 break;
             case R.id.nav_sightings:
-                selectedFragment = new SightingsFragment();
+                replaceFragment(new SightingsFragment());
                     break;
             case R.id.nav_vehicles:
-                selectedFragment = new VehiclesFragment();
+                replaceFragment(new VehiclesFragment());
                 break;
         }
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
         return true;
         }
     };
+
+    private void replaceFragment(Fragment fragment){
+        getSupportFragmentManager()
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit();
+    }
 }
