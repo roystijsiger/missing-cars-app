@@ -50,7 +50,6 @@ public class SightingsAdapter extends ArrayAdapter<Sighting> {
         photo.setImageBitmap(decodedByte);
 
 
-        // TODO: 1/19/2019 image source has to be changed and display the position in google maps or at least give a location name(street name, city etc.) ;
         return convertView;
     }
 
