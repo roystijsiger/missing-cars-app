@@ -10,6 +10,7 @@
         android:text="New vehicle"
         android:textSize="20sp"/>
 
+    <!-- vehicle license -->
     <TextView
         android:id="@+id/lbl_vehicle_license"
         android:layout_width="wrap_content"
@@ -23,11 +24,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/lbl_vehicle_license"/>
 
+
+    <!-- dropdown with the vehicle types -->
     <TextView
         android:id="@+id/lbl_vehicle_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="License plate"
+        android:text="Type:"
         android:layout_below="@id/txt_vehicle_license"/>
 
     <Spinner
@@ -36,4 +39,41 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/lbl_vehicle_type"></Spinner>
 
+    <!-- brand -->
+    <TextView
+        android:id="@+id/lbl_vehicle_brand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Brand:"
+        android:layout_below="@id/spinner_vehicle_type"
+        />
+
+    <EditText
+        android:id="@+id/txt_vehicle_brand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lbl_vehicle_brand"/>
+
+    <!-- color -->
+    <TextView
+        android:id="@+id/lbl_vehicle_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vehicle color: "
+        android:layout_below="@id/txt_vehicle_brand"/>
+
+    <EditText
+        android:id="@+id/txt_vehicle_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lbl_vehicle_color"/>
+
+    <!-- LocationPicker Button -->
+    <Button
+        android:id="@+id/btn_location_picker"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:background="@android:color/holo_blue_dark"
+        android:layout_below="@id/txt_vehicle_color"
+        android:text="Select last known location"/>
 </RelativeLayout>

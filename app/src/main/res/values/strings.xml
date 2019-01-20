@@ -3,7 +3,7 @@
     <string name="nav_vehicles">Vehicles</string>
     <string name="nav_user">My</string>
     <string name="nav_sightings">Sightings</string>
-
+    <string name="google_api_key">AIzaSyD-tB2AUGvcF3zrzAmM4aODyDU3qr0jD_k</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
