@@ -32,7 +32,7 @@ public class WebService {
             .url(host.concat(endpoint));
 
         if(getToken() != null) {
-            builder = builder.addHeader("Authentication", getToken());
+            builder = builder.addHeader("Authorization", getToken());
         }
 
         return builder;
