@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RegisterFragment createRegisterFragment() {
         RegisterFragment fragment = new RegisterFragment();
-        fragment.onRegistered(new Runnable(){
+        fragment.onClose(new Runnable(){
             @Override
             public void run() {
                 replaceFragment(loginFragment);
@@ -79,10 +79,16 @@ public class MainActivity extends AppCompatActivity {
 
     private LoginFragment createLoginFragment() {
         LoginFragment fragment = new LoginFragment();
-        fragment.onLoggedIn(new Runnable(){
+        fragment.setOnLogin(new Runnable(){
             @Override
             public void run() {
                 replaceFragment(profileFragment);
+            }
+        });
+        fragment.setOnRegister(new Runnable(){
+            @Override
+            public void run() {
+                replaceFragment(registerFragment);
             }
         });
         return fragment;

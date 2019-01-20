@@ -20,7 +20,7 @@ public class RegisterFragment extends Fragment implements RegisterFragmentPresen
     private EditText passwordEditText;
     private EditText passwordConfirmEditText;
 
-    private Runnable onRegistered;
+    private Runnable onClose;
 
     public RegisterFragment() {
     }
@@ -43,6 +43,7 @@ public class RegisterFragment extends Fragment implements RegisterFragmentPresen
         passwordConfirmEditText = view.findViewById(R.id.txt_password_confirm);
 
         Button registerButton = view.findViewById(R.id.btn_register);
+        Button loginButton = view.findViewById(R.id.btn_login);
 
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -51,11 +52,21 @@ public class RegisterFragment extends Fragment implements RegisterFragmentPresen
             }
         });
 
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                emailEditText.setText(null);
+                passwordEditText.setText(null);
+                passwordConfirmEditText.setText(null);
+                onClose.run();
+            }
+        });
+
         return view;
     }
 
-    public void onRegistered(Runnable runnable) {
-        onRegistered = runnable;
+    public void onClose(Runnable runnable) {
+        onClose = runnable;
     }
 
     @Override
@@ -79,6 +90,7 @@ public class RegisterFragment extends Fragment implements RegisterFragmentPresen
     public void onRegistered() {
         emailEditText.setText(null);
         passwordEditText.setText(null);
-        onRegistered.run();
+        passwordConfirmEditText.setText(null);
+        onClose.run();
     }
 }

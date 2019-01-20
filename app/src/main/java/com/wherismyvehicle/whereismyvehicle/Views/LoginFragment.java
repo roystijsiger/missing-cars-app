@@ -13,8 +13,9 @@ import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationSt
 
 public class LoginFragment extends Fragment {
 
-    private Runnable onLoggedIn;
     private View fragmentView;
+    private Runnable onRegister;
+    private Runnable onLogin;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -28,20 +29,33 @@ public class LoginFragment extends Fragment {
         fragmentView = inflater.inflate(R.layout.fragment_login, container, false);
 
         Button loginButton = fragmentView.findViewById(R.id.btn_login);
+        Button registerButton = fragmentView.findViewById(R.id.btn_register);
+
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 // TODO: Get token and get token
 
 
-                onLoggedIn.run();
+                onLogin.run();
+            }
+        });
+
+        registerButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                onRegister.run();
             }
         });
 
         return fragmentView;
     }
 
-    public void onLoggedIn(Runnable runnable) {
-        onLoggedIn = runnable;
+    public void setOnRegister(Runnable runnable) {
+        onRegister = runnable;
+    }
+
+    public void setOnLogin(Runnable runnable) {
+        onLogin = runnable;
     }
 }
