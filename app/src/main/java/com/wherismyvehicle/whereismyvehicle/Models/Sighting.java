@@ -5,15 +5,24 @@ import android.location.Location;
 public class Sighting {
     private int id;
     private Vehicle vehicle;
-    private Location location;
     private String photo;
+    private Double longitude;
+    private Double latitude;
 
     public Sighting(int id, Vehicle vehicle, Location location, String photo) {
         this.id = id;
         this.vehicle = vehicle;
-        this.location = location;
+        this.longitude = location.getLongitude();
+        this.latitude = location.getLatitude();
         this.photo = photo;
     }
+
+    public Sighting(Location location, String photo) {
+        this.longitude = location.getLongitude();
+        this.latitude = location.getLatitude();
+        this.photo = photo;
+    }
+
 
     public int getId() {
         return id;
@@ -29,11 +38,15 @@ public class Sighting {
     }
 
     public Location getLocation() {
+        Location location = new Location("Dummy provider");
+        location.setLatitude(this.latitude);
+        location.setLongitude(this.longitude);
         return location;
     }
 
     public Sighting setLocation(Location location) {
-        this.location = location;
+        this.longitude = location.getLongitude();
+        this.latitude = location.getLatitude();
         return this;
     }
 

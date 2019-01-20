@@ -1,5 +1,6 @@
 package com.wherismyvehicle.whereismyvehicle.Views;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -11,10 +12,14 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.AttributeSet;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -31,19 +36,23 @@ public class NewSightingActivity extends AppCompatActivity implements NewSightin
     private final static int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private boolean locationPermissionGranted;
-    private String image;
+    private String photo;
     private Location location;
+    private int vehicleId;
+    private Activity activity;
+    private NewSightingActivityPresenter presenter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_sighting);
+        this.vehicleId = getIntent().getIntExtra("vehicle_id", 0);
+        presenter = new NewSightingActivityPresenter(this);
+        this.activity = this;
 
         // Construct a FusedLocationProviderClient.
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         getLocationPermission();
         getLastLocation();
-
-        int vehicleId = getIntent().getIntExtra("vehicle_id", 0);
 
         //open camera listener
         ImageButton openCameraButton = findViewById(R.id.btn_open_camera);
@@ -56,10 +65,34 @@ public class NewSightingActivity extends AppCompatActivity implements NewSightin
                 }
             }
         });
+
+        Button addSighting = findViewById(R.id.btn_add_sighting);
+        addSighting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                presenter.addNewSightings(location, photo);
+            }
+        });
     }
 
     public Context getContext(){
         return this;
+    }
+
+    public int getVehicleId(){
+        return vehicleId;
+    }
+
+    public void showSuccessMessage(final String message){
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                String toastMsg = String.format(message);
+                Toast.makeText(activity, toastMsg, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -71,7 +104,10 @@ public class NewSightingActivity extends AppCompatActivity implements NewSightin
             imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
             byte[] byteArray = byteArrayOutputStream .toByteArray();
             String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
-            this.image = encoded;
+            this.photo = encoded;
+
+            ImageView imagePreview = findViewById(R.id.img_taken_picture);
+            imagePreview.setImageBitmap(imageBitmap);
         }
     }
 
