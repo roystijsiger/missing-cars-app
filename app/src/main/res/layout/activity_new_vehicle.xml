@@ -16,10 +16,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Vehicle license:"
-        android:layout_below="@id/txt_title_new_vehicle"/>
-
+        android:layout_below="@id/txt_title_new_vehicle"
+        />
     <EditText
         android:id="@+id/txt_vehicle_license"
+        android:labelFor="@id/txt_vehicle_license"
+        android:hint="Vehicle license"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/lbl_vehicle_license"/>
@@ -41,29 +43,30 @@
 
     <!-- brand -->
     <TextView
-        android:id="@+id/lbl_vehicle_brand"
+        android:id="@id/lbl_vehicle_brand"
+        android:text="Brand:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Brand:"
-        android:layout_below="@id/spinner_vehicle_type"
-        />
+        android:layout_below="@+id/spinner_vehicle_type"/>
 
     <EditText
         android:id="@+id/txt_vehicle_brand"
+        android:hint="Vehicle brand"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/lbl_vehicle_brand"/>
 
     <!-- color -->
     <TextView
-        android:id="@+id/lbl_vehicle_color"
+        android:id="@id/lbl_vehicle_color"
+        android:text="Vehicle color:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vehicle color: "
-        android:layout_below="@id/txt_vehicle_brand"/>
+        android:layout_below="@+id/txt_vehicle_brand"/>
 
     <EditText
         android:id="@+id/txt_vehicle_color"
+        android:hint="Vehicle color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/lbl_vehicle_color"/>
@@ -76,4 +79,20 @@
         android:background="@android:color/holo_blue_dark"
         android:layout_below="@id/txt_vehicle_color"
         android:text="Select last known location"/>
+
+    <TextView
+        android:id="@+id/txt_current_selected_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selected location:"
+        android:layout_below="@id/btn_location_picker"/>
+    
+    <!-- Add vehicle -->
+    <Button
+        android:id="@+id/btn_add_vehicle"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:background="@android:color/holo_green_dark"
+        android:text="Report missing vehicle"
+        android:layout_below="@id/txt_current_selected_location"/>
 </RelativeLayout>

@@ -11,9 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.wherismyvehicle.whereismyvehicle.Models.Sighting;
 import com.wherismyvehicle.whereismyvehicle.Models.Vehicle;
-import com.wherismyvehicle.whereismyvehicle.Models.VehicleType;
 import com.wherismyvehicle.whereismyvehicle.Presenters.VehiclesFragmentPresenter;
 import com.wherismyvehicle.whereismyvehicle.Views.Adapters.VehiclesAdapter;
 

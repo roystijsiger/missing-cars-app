@@ -3,6 +3,7 @@ package com.wherismyvehicle.whereismyvehicle.Presenters;
 import android.content.Context;
 import android.content.Intent;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.wherismyvehicle.whereismyvehicle.Data.DataPersistence;
 import com.wherismyvehicle.whereismyvehicle.Data.DataPersistenceActionEventHandler;
 import com.wherismyvehicle.whereismyvehicle.Data.ModelPersistenceService;
