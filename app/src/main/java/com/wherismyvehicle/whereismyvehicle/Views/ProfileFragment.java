@@ -7,12 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.wherismyvehicle.whereismyvehicle.Presenters.ProfileFragmentPresenter;
 
 public class ProfileFragment extends Fragment implements ProfileFragmentPresenter.View {
 
     private ProfileFragmentPresenter presenter;
+    private Runnable onLoggedOut;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,6 +26,20 @@ public class ProfileFragment extends Fragment implements ProfileFragmentPresente
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View view =  inflater.inflate(R.layout.fragment_profile, container, false);
+
+        Button logoutButton = view.findViewById(R.id.btn_logout);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onLoggedOut.run();
+            }
+        });
+
+        return view;
+    }
+
+    public void onLoggedOut(Runnable runnable) {
+        onLoggedOut = runnable;
     }
 }

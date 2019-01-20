@@ -10,36 +10,81 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    private VehiclesFragment vehiclesFragment;
+    private SightingsFragment sightingsFragment;
+    private LoginFragment loginFragment;
+    private RegisterFragment registerFragment;
+    private ProfileFragment profileFragment;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        replaceFragment(new VehiclesFragment());
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
+        vehiclesFragment = new VehiclesFragment();
+        sightingsFragment = new SightingsFragment();
+        loginFragment = createLoginFragment();
+        registerFragment = createRegisterFragment();
+        profileFragment = createProfileFragment();
 
+        replaceFragment(vehiclesFragment);
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+
+        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch(item.getItemId()){
+                    case R.id.nav_profile:
+                        // TODO: Check auth first
+                        replaceFragment(registerFragment);
+                        break;
+                    case R.id.nav_sightings:
+                        replaceFragment(sightingsFragment);
+                        break;
+                    case R.id.nav_vehicles:
+                        replaceFragment(vehiclesFragment);
+                        break;
+                }
+
+                return true;
+            }
+        });
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener(){
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    private ProfileFragment createProfileFragment() {
+        ProfileFragment fragment = new ProfileFragment();
+        fragment.onLoggedOut(new Runnable(){
+            @Override
+            public void run() {
+                replaceFragment(loginFragment);
+            }
+        });
+        return fragment;
+    }
 
-        switch(item.getItemId()){
-            case R.id.nav_profile:
-                replaceFragment(new RegisterFragment());
-                break;
-            case R.id.nav_sightings:
-                replaceFragment(new SightingsFragment());
-                    break;
-            case R.id.nav_vehicles:
-                replaceFragment(new VehiclesFragment());
-                break;
-        }
+    private RegisterFragment createRegisterFragment() {
+        RegisterFragment fragment = new RegisterFragment();
+        fragment.onRegistered(new Runnable(){
+            @Override
+            public void run() {
+                replaceFragment(loginFragment);
+            }
+        });
+        return fragment;
+    }
 
-        return true;
-        }
-    };
+    private LoginFragment createLoginFragment() {
+        LoginFragment fragment = new LoginFragment();
+        fragment.onLoggedIn(new Runnable(){
+            @Override
+            public void run() {
+                replaceFragment(profileFragment);
+            }
+        });
+        return fragment;
+    }
 
     private void replaceFragment(Fragment fragment){
         getSupportFragmentManager()

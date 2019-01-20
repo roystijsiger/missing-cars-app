@@ -11,7 +11,7 @@ import android.widget.Button;
 
 public class LoginFragment extends Fragment {
 
-
+    private Runnable onLoggedIn;
     private View fragmentView;
 
     public LoginFragment() {
@@ -25,16 +25,18 @@ public class LoginFragment extends Fragment {
         // Inflate the layout for this fragment
         fragmentView = inflater.inflate(R.layout.fragment_login, container, false);
 
-
         Button loginButton = fragmentView.findViewById(R.id.btn_login);
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                onLoggedIn.run();
             }
         });
 
         return fragmentView;
     }
 
+    public void onLoggedIn(Runnable runnable) {
+        onLoggedIn = runnable;
+    }
 }
