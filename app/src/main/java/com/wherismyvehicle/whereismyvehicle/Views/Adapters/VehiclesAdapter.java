@@ -11,6 +11,7 @@ package com.wherismyvehicle.whereismyvehicle.Views.Adapters;
         import android.widget.TextView;
 
         import com.wherismyvehicle.whereismyvehicle.Models.Vehicle;
+        import com.wherismyvehicle.whereismyvehicle.Views.NewSightingActivity;
         import com.wherismyvehicle.whereismyvehicle.Views.R;
 
         import java.util.ArrayList;
@@ -33,7 +34,16 @@ public class VehiclesAdapter extends ArrayAdapter<Vehicle> {
         TextView vehicleLicense = convertView.findViewById(R.id.txt_vehicle_license);
         TextView vehicleColor = convertView.findViewById(R.id.txt_vehicle_color);
         ImageButton showLocationButton = convertView.findViewById(R.id.btn_show_location);
+        ImageButton addSightingButton = convertView.findViewById(R.id.btn_add_sighting);
 
+        addSightingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), NewSightingActivity.class);
+                intent.putExtra("vehicle_id", vehicle.getId());
+                getContext().startActivity(intent);
+            }
+        });
         showLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -6,7 +6,7 @@
         android:title="@string/nav_vehicles" />
     <item
         android:id="@+id/nav_sightings"
-        android:icon="@drawable/ic_gps_fixed"
+        android:icon="@drawable/ic_eye"
         android:title="@string/nav_sightings" />
     <item
         android:id="@+id/nav_profile"

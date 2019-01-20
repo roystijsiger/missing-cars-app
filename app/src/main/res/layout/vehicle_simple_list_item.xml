@@ -65,6 +65,14 @@
         />
 
     <ImageButton
+        android:id="@+id/btn_add_sighting"
+        android:layout_below="@id/txt_vehicle_license"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:layout_toLeftOf="@id/btn_show_location"
+        android:src="@drawable/ic_eye"/>
+
+    <ImageButton
         android:id="@+id/btn_show_location"
         android:layout_alignParentRight="true"
         android:layout_below="@id/txt_vehicle_license"

@@ -13,7 +13,7 @@ import com.wherismyvehicle.whereismyvehicle.Models.Vehicle;
 
 import java.util.ArrayList;
 
-public class NewVehicleActivityPresenter extends Activity implements ProfileFragmentPresenter.View{
+public class NewVehicleActivityPresenter{
     private View view;
     private DataPersistence<Vehicle> dataPersistence;
 
