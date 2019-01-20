@@ -1,46 +1,46 @@
 package com.wherismyvehicle.whereismyvehicle.Models;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
+@Entity
 public class User {
-    private int id;
+
+    @PrimaryKey
+    @NonNull
     private String email;
+
+    @Ignore
     private String password;
+
     private String token;
 
     public User() {
-    }
-
-    public User(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public User setEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
-        return this;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public User setPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
-        return this;
     }
 
     public String getToken() {
         return token;
     }
 
-    public User setToken(String token) {
+    public void setToken(String token) {
         this.token = token;
-        return this;
     }
 }

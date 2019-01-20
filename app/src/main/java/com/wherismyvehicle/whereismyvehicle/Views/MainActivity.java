@@ -7,7 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationState;
+import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationSingleton;
+import com.wherismyvehicle.whereismyvehicle.Data.AppDatabase.AppDatabaseSingleton;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -23,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        AuthenticationState.instantiate(this);
+        AuthenticationSingleton.instantiate(this);
+        AppDatabaseSingleton.instantiate(this);
 
         vehiclesFragment = new VehiclesFragment();
         sightingsFragment = new SightingsFragment();
@@ -39,8 +41,13 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch(item.getItemId()){
                 case R.id.nav_profile:
-                    // TODO: Check auth first
-                    replaceFragment(registerFragment);
+                    if(AuthenticationSingleton.getInstance().isAuthenticated()) {
+                        replaceFragment(profileFragment);
+                    }
+                    else {
+                        replaceFragment(loginFragment);
+                    }
+
                     break;
                 case R.id.nav_sightings:
                     replaceFragment(sightingsFragment);

@@ -31,15 +31,15 @@ public class AuthenticationService extends WebService {
         DataPersistenceHttpAction<User> task = new DataPersistenceHttpAction<User>(User.class){
             @Override
             public void onFailure(Call call, IOException e) {
-                AuthenticationState.getInstance().invokeOnRegistrationFailedHandler();
+                AuthenticationSingleton.getInstance().invokeOnRegistrationFailedHandler();
             }
         };
 
         task.AddHandler(new DataPersistenceActionEventHandler<User>() {
             @Override
             public void OnResult(User result) {
-                AuthenticationState.getInstance().setUser(result);
-                AuthenticationState.getInstance().invokeOnRegisteredHandler();
+                AuthenticationSingleton.getInstance().setUser(result);
+                AuthenticationSingleton.getInstance().invokeOnRegisteredHandler();
             }
         });
 
@@ -58,15 +58,15 @@ public class AuthenticationService extends WebService {
         DataPersistenceHttpAction<User> task = new DataPersistenceHttpAction<User>(User.class){
             @Override
             public void onFailure(Call call, IOException e) {
-                AuthenticationState.getInstance().invokeOnLoginFailedHandler();
+                AuthenticationSingleton.getInstance().invokeOnLoginFailedHandler();
             }
         };
 
         task.AddHandler(new DataPersistenceActionEventHandler<User>() {
             @Override
             public void OnResult(User result) {
-                AuthenticationState.getInstance().setUser(result);
-                AuthenticationState.getInstance().invokeOnLoggedInHandler();
+                AuthenticationSingleton.getInstance().setUser(result);
+                AuthenticationSingleton.getInstance().invokeOnLoggedInHandler();
             }
         });
 

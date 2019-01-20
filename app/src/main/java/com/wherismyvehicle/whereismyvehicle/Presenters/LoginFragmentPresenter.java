@@ -2,7 +2,7 @@ package com.wherismyvehicle.whereismyvehicle.Presenters;
 
 import android.util.Patterns;
 
-import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationState;
+import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationSingleton;
 
 public class LoginFragmentPresenter {
 
@@ -11,13 +11,13 @@ public class LoginFragmentPresenter {
     public LoginFragmentPresenter(final View fragment) {
         this.fragment = fragment;
 
-        AuthenticationState.getInstance().setOnLoggedInHandler(new Runnable() {
+        AuthenticationSingleton.getInstance().setOnLoggedInHandler(new Runnable() {
             @Override
             public void run() {
                 fragment.onLoggedIn();
             }
         });
-        AuthenticationState.getInstance().setOnLoginFailedHandler(new Runnable() {
+        AuthenticationSingleton.getInstance().setOnLoginFailedHandler(new Runnable() {
             @Override
             public void run() {
                 fragment.onLoginFailed();
@@ -31,8 +31,8 @@ public class LoginFragmentPresenter {
             return;
         }
 
-        AuthenticationState.getInstance().logout();
-        AuthenticationState.getInstance().login(email, password);
+        AuthenticationSingleton.getInstance().logout();
+        AuthenticationSingleton.getInstance().login(email, password);
     }
 
     public interface View {

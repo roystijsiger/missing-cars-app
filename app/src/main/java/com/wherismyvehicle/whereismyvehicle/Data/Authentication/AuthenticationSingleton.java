@@ -2,15 +2,14 @@ package com.wherismyvehicle.whereismyvehicle.Data.Authentication;
 
 import android.content.Context;
 
+import com.wherismyvehicle.whereismyvehicle.Data.AppDatabase.AppDatabase;
+import com.wherismyvehicle.whereismyvehicle.Data.AppDatabase.AppDatabaseSingleton;
 import com.wherismyvehicle.whereismyvehicle.Models.User;
 
 // Singleton
-public class AuthenticationState {
+public class AuthenticationSingleton {
+    private static AuthenticationSingleton instance;
     private AuthenticationService authenticationService;
-    private User user;
-
-    private static AuthenticationState instance;
-
     private Runnable onRegisteredHandler;
     private Runnable onRegistrationFailedHandler;
     private Runnable onLoggedInHandler;
@@ -18,23 +17,25 @@ public class AuthenticationState {
     private Runnable onLogoutHandler;
 
 
-    public AuthenticationState(Context context) {
+    public AuthenticationSingleton(Context context) {
         authenticationService = new AuthenticationService(context);
     }
 
-    public static AuthenticationState getInstance() {
+    public static AuthenticationSingleton getInstance() {
         return instance;
     }
 
     public static void instantiate(Context context) {
-        instance = new AuthenticationState(context);
+        instance = new AuthenticationSingleton(context);
     }
 
     public boolean isAuthenticated() {
-        return user != null;
+        return getUser() != null;
     }
 
     public String getToken() {
+        User user = getUser();
+
         if(user == null) return null;
         if(user.getToken().isEmpty()) return null;
 
@@ -50,12 +51,9 @@ public class AuthenticationState {
     }
 
     public void logout(){
-        user = null;
-        this.invokeOnLogoutHandler();
-    }
+        AppDatabaseSingleton.getInstance().getAppDb().userDao().deleteUser();
 
-    public void setUser(User user) {
-        this.user = user;
+        this.invokeOnLogoutHandler();
     }
 
     public void invokeOnRegisteredHandler() {
@@ -64,7 +62,7 @@ public class AuthenticationState {
         }
     }
 
-    public AuthenticationState setOnRegisteredHandler(Runnable onRegisteredHandler) {
+    public AuthenticationSingleton setOnRegisteredHandler(Runnable onRegisteredHandler) {
         this.onRegisteredHandler = onRegisteredHandler;
         return this;
     }
@@ -75,7 +73,7 @@ public class AuthenticationState {
         }
     }
 
-    public AuthenticationState setOnRegistrationFailedHandler(Runnable onRegistrationFailedHandler) {
+    public AuthenticationSingleton setOnRegistrationFailedHandler(Runnable onRegistrationFailedHandler) {
         this.onRegistrationFailedHandler = onRegistrationFailedHandler;
         return this;
     }
@@ -85,7 +83,8 @@ public class AuthenticationState {
             onLoggedInHandler.run();
         }
     }
-     public AuthenticationState setOnLoggedInHandler(Runnable onLoggedInHandler) {
+
+     public AuthenticationSingleton setOnLoggedInHandler(Runnable onLoggedInHandler) {
         this.onLoggedInHandler = onLoggedInHandler;
         return this;
     }
@@ -96,7 +95,7 @@ public class AuthenticationState {
         }
     }
 
-    public AuthenticationState setOnLoginFailedHandler(Runnable onLoginFailedHandler) {
+    public AuthenticationSingleton setOnLoginFailedHandler(Runnable onLoginFailedHandler) {
         this.onLoginFailedHandler = onLoginFailedHandler;
         return this;
     }
@@ -107,8 +106,17 @@ public class AuthenticationState {
         }
     }
 
-    public AuthenticationState setOnLogoutHandler(Runnable onLogoutHandler) {
+    public AuthenticationSingleton setOnLogoutHandler(Runnable onLogoutHandler) {
         this.onLogoutHandler = onLogoutHandler;
         return this;
+    }
+
+    private User getUser(){
+        return AppDatabaseSingleton.getInstance().getAppDb().userDao().getUser();
+    }
+
+    public void setUser(User user) {
+        AppDatabaseSingleton.getInstance().getAppDb().userDao().deleteUser();
+        AppDatabaseSingleton.getInstance().getAppDb().userDao().insertUser(user);
     }
 }

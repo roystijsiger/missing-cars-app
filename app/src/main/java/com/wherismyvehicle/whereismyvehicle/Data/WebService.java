@@ -4,7 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationState;
+import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationSingleton;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -48,7 +48,7 @@ public class WebService {
     }
 
     private String getToken(){
-        String token = AuthenticationState.getInstance().getToken();
+        String token = AuthenticationSingleton.getInstance().getToken();
         if(token == null) return null;
 
         return "Bearer ".concat(token);
