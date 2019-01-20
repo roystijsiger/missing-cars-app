@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationState;
 import com.wherismyvehicle.whereismyvehicle.Presenters.ProfileFragmentPresenter;
 
 public class ProfileFragment extends Fragment implements ProfileFragmentPresenter.View {
@@ -32,6 +33,8 @@ public class ProfileFragment extends Fragment implements ProfileFragmentPresente
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AuthenticationState.getInstance().logout();
+
                 onLoggedOut.run();
             }
         });
