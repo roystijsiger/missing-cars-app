@@ -29,6 +29,16 @@ public class Vehicle {
         this.sightings = sightings;
     }
 
+    public Vehicle(String type, String brand, String color, String licensePlate, double lastKnownLongitude, double lastKnownLatitude) {
+        this.type = type;
+        this.brand = brand;
+        this.color = color;
+        this.licensePlate = licensePlate;
+        this.lastKnownLatitude = lastKnownLatitude;
+        this.lastKnownLongitude = lastKnownLongitude;
+    }
+
+
     public int getId() {
         return id;
     }
