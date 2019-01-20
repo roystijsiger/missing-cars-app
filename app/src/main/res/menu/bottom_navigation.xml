@@ -5,10 +5,6 @@
         android:icon="@drawable/ic_direction_cars"
         android:title="@string/nav_vehicles" />
     <item
-        android:id="@+id/nav_sightings"
-        android:icon="@drawable/ic_eye"
-        android:title="@string/nav_sightings" />
-    <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/ic_person"
         android:title="@string/nav_user" />

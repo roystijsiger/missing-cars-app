@@ -49,9 +49,9 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     break;
-                case R.id.nav_sightings:
-                    replaceFragment(sightingsFragment);
-                    break;
+                //case R.id.nav_sightings:
+                //    replaceFragment(sightingsFragment);
+                //    break;
                 case R.id.nav_vehicles:
                     replaceFragment(vehiclesFragment);
                     break;
