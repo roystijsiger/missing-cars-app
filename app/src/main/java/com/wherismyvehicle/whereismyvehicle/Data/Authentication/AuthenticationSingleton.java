@@ -1,14 +1,16 @@
 package com.wherismyvehicle.whereismyvehicle.Data.Authentication;
 
+import android.arch.persistence.room.Room;
 import android.content.Context;
 
 import com.wherismyvehicle.whereismyvehicle.Data.AppDatabase.AppDatabase;
-import com.wherismyvehicle.whereismyvehicle.Data.AppDatabase.AppDatabaseSingleton;
 import com.wherismyvehicle.whereismyvehicle.Models.User;
 
 // Singleton
 public class AuthenticationSingleton {
     private static AuthenticationSingleton instance;
+    private static AppDatabase db;
+
     private AuthenticationService authenticationService;
     private Runnable onRegisteredHandler;
     private Runnable onRegistrationFailedHandler;
@@ -27,6 +29,7 @@ public class AuthenticationSingleton {
 
     public static void instantiate(Context context) {
         instance = new AuthenticationSingleton(context);
+        db = Room.databaseBuilder(context, AppDatabase.class, "whereismyvehicle-db").allowMainThreadQueries().build();
     }
 
     public boolean isAuthenticated() {
@@ -61,7 +64,7 @@ public class AuthenticationSingleton {
     }
 
     public void logout(){
-        AppDatabaseSingleton.getInstance().getAppDb().userDao().deleteUser();
+        db.userDao().deleteUser();
 
         this.invokeOnLogoutHandler();
     }
@@ -122,11 +125,11 @@ public class AuthenticationSingleton {
     }
 
     private User getUser(){
-        return AppDatabaseSingleton.getInstance().getAppDb().userDao().getUser();
+        return db.userDao().getUser();
     }
 
     public void setUser(User user) {
-        AppDatabaseSingleton.getInstance().getAppDb().userDao().deleteUser();
-        AppDatabaseSingleton.getInstance().getAppDb().userDao().insertUser(user);
+        db.userDao().deleteUser();
+        db.userDao().insertUser(user);
     }
 }

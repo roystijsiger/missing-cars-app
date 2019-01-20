@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationSingleton;
-import com.wherismyvehicle.whereismyvehicle.Data.AppDatabase.AppDatabaseSingleton;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -25,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         AuthenticationSingleton.instantiate(this);
-        AppDatabaseSingleton.instantiate(this);
 
         vehiclesFragment = new VehiclesFragment();
         sightingsFragment = new SightingsFragment();
