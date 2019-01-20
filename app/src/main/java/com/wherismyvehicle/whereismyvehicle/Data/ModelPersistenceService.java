@@ -11,7 +11,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 
-public class WebServiceDataPersistence<T> implements DataPersistence<T> {
+public class ModelPersistenceService<T> implements DataPersistence<T> {
 
     public static final MediaType JSON_CONTENT_TYPE = MediaType.parse("application/json; charset=utf-8");
 
@@ -19,7 +19,7 @@ public class WebServiceDataPersistence<T> implements DataPersistence<T> {
     private final String baseUrl;
     private final Context context;
 
-    public WebServiceDataPersistence(Context context, String endpoint) {
+    public ModelPersistenceService(Context context, String endpoint) {
         this.context = context;
         this.client = new OkHttpClient();
         this.baseUrl = "http://whereismyvehicle.azurewebsites.net/".concat(endpoint);

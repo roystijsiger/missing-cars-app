@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.wherismyvehicle.whereismyvehicle.Data.DataPersistence;
 import com.wherismyvehicle.whereismyvehicle.Data.DataPersistenceActionEventHandler;
-import com.wherismyvehicle.whereismyvehicle.Data.WebServiceDataPersistence;
+import com.wherismyvehicle.whereismyvehicle.Data.ModelPersistenceService;
 import com.wherismyvehicle.whereismyvehicle.Models.Sighting;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class SightingsFragmentPresenter {
     public SightingsFragmentPresenter(View view) {
         this.view = view;
 
-        dataPersistence = new WebServiceDataPersistence<>(view.GetContext(), "sightings");
+        dataPersistence = new ModelPersistenceService<>(view.GetContext(), "sightings");
     }
 
     public void LoadSightings() {

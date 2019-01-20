@@ -5,7 +5,7 @@ import android.content.Intent;
 
 import com.wherismyvehicle.whereismyvehicle.Data.DataPersistence;
 import com.wherismyvehicle.whereismyvehicle.Data.DataPersistenceActionEventHandler;
-import com.wherismyvehicle.whereismyvehicle.Data.WebServiceDataPersistence;
+import com.wherismyvehicle.whereismyvehicle.Data.ModelPersistenceService;
 import com.wherismyvehicle.whereismyvehicle.Models.Vehicle;
 import com.wherismyvehicle.whereismyvehicle.Views.NewVehicleActivity;
 
@@ -20,7 +20,7 @@ public class VehiclesFragmentPresenter {
     public VehiclesFragmentPresenter(View view) {
         this.view = view;
 
-        dataPersistence = new WebServiceDataPersistence<>(view.getContext(), "vehicles");
+        dataPersistence = new ModelPersistenceService<>(view.getContext(), "vehicles");
         vehicles = new ArrayList<>();
     }
 
