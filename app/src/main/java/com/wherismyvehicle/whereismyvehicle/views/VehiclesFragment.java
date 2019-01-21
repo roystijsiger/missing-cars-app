@@ -1,7 +1,6 @@
-package com.wherismyvehicle.whereismyvehicle.Views;
+package com.wherismyvehicle.whereismyvehicle.views;
 
 import android.content.Context;
-import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,9 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.wherismyvehicle.whereismyvehicle.Models.Vehicle;
-import com.wherismyvehicle.whereismyvehicle.Presenters.VehiclesFragmentPresenter;
-import com.wherismyvehicle.whereismyvehicle.Views.Adapters.VehiclesAdapter;
+import com.wherismyvehicle.whereismyvehicle.models.Vehicle;
+import com.wherismyvehicle.whereismyvehicle.presenters.VehiclesFragmentPresenter;
+import com.wherismyvehicle.whereismyvehicle.views.adapters.VehiclesAdapter;
 
 import java.util.ArrayList;
 

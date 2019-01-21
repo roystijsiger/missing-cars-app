@@ -3,7 +3,7 @@ package com.wherismyvehicle.whereismyvehicle.Data.Authentication;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 
-import com.wherismyvehicle.whereismyvehicle.Data.AppDatabase.AppDatabase;
+import com.wherismyvehicle.whereismyvehicle.Data.LocalPersistence.AppDatabase;
 import com.wherismyvehicle.whereismyvehicle.Models.User;
 
 // Singleton
@@ -11,7 +11,7 @@ public class AuthenticationSingleton {
     private static AuthenticationSingleton instance;
     private static AppDatabase db;
 
-    private AuthenticationService authenticationService;
+    private Service service;
     private Runnable onRegisteredHandler;
     private Runnable onRegistrationFailedHandler;
     private Runnable onLoggedInHandler;
@@ -20,7 +20,7 @@ public class AuthenticationSingleton {
 
 
     public AuthenticationSingleton(Context context) {
-        authenticationService = new AuthenticationService(context);
+        service = new Service(context);
     }
 
     public static AuthenticationSingleton getInstance() {
@@ -56,11 +56,11 @@ public class AuthenticationSingleton {
     }
 
     public void login(String email, String password){
-        this.authenticationService.login(email, password);
+        this.service.login(email, password);
     }
 
     public void register(String email, String password) {
-        this.authenticationService.register(email, password);
+        this.service.register(email, password);
     }
 
     public void logout(){

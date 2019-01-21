@@ -4,8 +4,8 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.wherismyvehicle.whereismyvehicle.Data.DataPersistenceActionEventHandler;
-import com.wherismyvehicle.whereismyvehicle.Data.DataPersistenceHttpAction;
-import com.wherismyvehicle.whereismyvehicle.Data.WebService;
+import com.wherismyvehicle.whereismyvehicle.Data.WebPersistence.DataPersistenceHttpAction;
+import com.wherismyvehicle.whereismyvehicle.Data.WebPersistence.WebService;
 import com.wherismyvehicle.whereismyvehicle.Models.User;
 
 import java.io.IOException;
@@ -14,8 +14,8 @@ import okhttp3.Call;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 
-public class AuthenticationService extends WebService {
-    AuthenticationService(Context context) {
+public class Service extends WebService {
+    Service(Context context) {
         super(context);
     }
 

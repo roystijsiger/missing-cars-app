@@ -4,11 +4,10 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
-import android.support.test.filters.MediumTest;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.wherismyvehicle.whereismyvehicle.Data.AppDatabase.AppDatabase;
-import com.wherismyvehicle.whereismyvehicle.Models.User;
+import com.wherismyvehicle.whereismyvehicle.data.localPersistence.AppDatabase;
+import com.wherismyvehicle.whereismyvehicle.models.User;
 
 import org.junit.After;
 import org.junit.Assert;

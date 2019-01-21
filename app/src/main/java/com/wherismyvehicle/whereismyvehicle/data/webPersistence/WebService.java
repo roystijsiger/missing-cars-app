@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationSingleton;
+import com.wherismyvehicle.whereismyvehicle.Data.WebPersistence.Exceptions.ConnectionUnavailableException;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
