@@ -41,8 +41,14 @@ public class AppDatabaseTest {
         // Act
         db = databaseBuilder.build();
 
-        // Assert
-        Assert.assertTrue(db.isOpen());
+        // Assert no exception
+    }
+
+    @Test
+    public void validateContext() {
+        // Context of the app under test.
+        Context appContext = InstrumentationRegistry.getTargetContext();
+        assertEquals("com.wherismyvehicle.whereismyvehicle", appContext.getPackageName());
     }
 
     @Test
@@ -69,13 +75,17 @@ public class AppDatabaseTest {
         user.setPassword(testUserPassword);
         user.setToken(testUserToken);
 
-        // Act
+        // Act insertUser
         db.userDao().insertUser(user);
 
-        // Assert
+        // Act getUser
         User validationUser = db.userDao().getUser();
+
+        // Assert get and insert
         Assert.assertEquals(validationUser.getEmail(), user.getEmail());
-        Assert.assertEquals(validationUser.getPassword(), user.getPassword());
+
+        // Password should not be stored
+        Assert.assertNull(validationUser.getPassword());
         Assert.assertEquals(validationUser.getToken(), user.getToken());
     }
 
@@ -98,7 +108,9 @@ public class AppDatabaseTest {
 
     @After
     public void tearDown() throws Exception {
+        // Act
         db.close();
-        Assert.assertFalse(db.isOpen());
+
+        // Assert no exception
     }
 }
