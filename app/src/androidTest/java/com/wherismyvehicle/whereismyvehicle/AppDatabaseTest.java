@@ -1,0 +1,104 @@
+package com.wherismyvehicle.whereismyvehicle;
+
+import android.arch.persistence.room.Room;
+import android.arch.persistence.room.RoomDatabase;
+import android.content.Context;
+import android.support.test.InstrumentationRegistry;
+import android.support.test.filters.MediumTest;
+import android.support.test.runner.AndroidJUnit4;
+
+import com.wherismyvehicle.whereismyvehicle.Data.AppDatabase.AppDatabase;
+import com.wherismyvehicle.whereismyvehicle.Models.User;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import static org.junit.Assert.*;
+
+@RunWith(AndroidJUnit4.class)
+public class AppDatabaseTest {
+    private final String testDatabaseName = "whereismyvehicle-db-test";
+
+    private final String testUserEmail = "test@example.com";
+    private final String testUserPassword = "admin123";
+    private final String testUserToken = "dsajidosajwqoenodxjdzjdasojeiwaokdsadsokapk";
+
+    private AppDatabase db;
+
+    public AppDatabaseTest() {
+    }
+
+    @Before
+    public void setUp() throws Exception {
+        // Arrange
+        Context context = InstrumentationRegistry.getContext();
+        RoomDatabase.Builder<AppDatabase> databaseBuilder = Room.inMemoryDatabaseBuilder(context, AppDatabase.class)
+                .allowMainThreadQueries();
+
+        // Act
+        db = databaseBuilder.build();
+
+        // Assert
+        Assert.assertTrue(db.isOpen());
+    }
+
+    @Test
+    public void buildUser(){
+        // Arrange
+        User user = new User();
+
+        // Act
+        user.setEmail(testUserEmail);
+        user.setPassword(testUserPassword);
+        user.setToken(testUserToken);
+
+        // Assert
+        Assert.assertEquals(user.getEmail(), testUserEmail);
+        Assert.assertEquals(user.getPassword(), testUserPassword);
+        Assert.assertEquals(user.getToken(), testUserToken);
+    }
+
+    @Test
+    public void insertAndGetUser() {
+        // Arrange
+        User user = new User();
+        user.setEmail(testUserEmail);
+        user.setPassword(testUserPassword);
+        user.setToken(testUserToken);
+
+        // Act
+        db.userDao().insertUser(user);
+
+        // Assert
+        User validationUser = db.userDao().getUser();
+        Assert.assertEquals(validationUser.getEmail(), user.getEmail());
+        Assert.assertEquals(validationUser.getPassword(), user.getPassword());
+        Assert.assertEquals(validationUser.getToken(), user.getToken());
+    }
+
+    @Test
+    public void deleteUser(){
+        // Arrange
+        User user = new User();
+        user.setEmail(testUserEmail);
+        user.setPassword(testUserPassword);
+        user.setToken(testUserToken);
+        db.userDao().insertUser(user);
+
+        // Act
+        db.userDao().deleteUser();
+
+        // Assert
+        User validationUser = db.userDao().getUser();
+        Assert.assertNull(validationUser);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        db.close();
+        Assert.assertFalse(db.isOpen());
+    }
+}
