@@ -19,8 +19,6 @@ import static org.junit.Assert.*;
 
 @RunWith(AndroidJUnit4.class)
 public class AppDatabaseTest {
-    private final String testDatabaseName = "whereismyvehicle-db-test";
-
     private final String testUserEmail = "test@example.com";
     private final String testUserPassword = "admin123";
     private final String testUserToken = "dsajidosajwqoenodxjdzjdasojeiwaokdsadsokapk";

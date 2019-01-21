@@ -43,7 +43,7 @@ public class NewVehicleActivity extends AppCompatActivity implements NewVehicleA
         this.presenter = new NewVehicleActivityPresenter(this);
 
         Spinner spinner = findViewById(R.id.spinner_vehicle_type);
-        spinner.setAdapter(new ArrayAdapter<VehicleType>(this,android.R.layout.simple_list_item_1, VehicleType.values()));
+        spinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, VehicleType.values()));
 
         mGeoDataClient = Places.getGeoDataClient(context);
         mPlacesDetectionClient = Places.getPlaceDetectionClient(context);

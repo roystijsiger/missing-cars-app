@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +16,6 @@ import android.widget.ImageView;
 
 import com.wherismyvehicle.whereismyvehicle.models.Sighting;
 import com.wherismyvehicle.whereismyvehicle.views.R;
-
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -24,7 +24,8 @@ public class SightingsAdapter extends ArrayAdapter<Sighting> {
         super(context, 0, sightings);
     }
 
-    public View getView(int position, View convertView, ViewGroup parent){
+    @NonNull
+    public View getView(int position, View convertView, @NonNull ViewGroup parent){
         final Sighting sighting = getItem(position);
 
         if(convertView == null){

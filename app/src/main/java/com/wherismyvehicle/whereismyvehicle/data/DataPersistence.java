@@ -1,5 +1,6 @@
 package com.wherismyvehicle.whereismyvehicle.data;
 
+@SuppressWarnings("unused")
 public interface DataPersistence <T> {
     DataPersistenceAction<T> Fetch(Class serializationClass, Object id);
     DataPersistenceAction<T[]> FetchAll(Class serializationClass);

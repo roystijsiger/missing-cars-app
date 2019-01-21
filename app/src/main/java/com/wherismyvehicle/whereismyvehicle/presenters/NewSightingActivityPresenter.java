@@ -53,7 +53,7 @@ public class NewSightingActivityPresenter {
 
     }
 
-    private boolean isStringNullOrEmpty(String string){
-        return string.equals(null) || string.equals("");
+    private boolean isStringNullOrEmpty(String value){
+        return value == null || value.equals("");
     }
 }

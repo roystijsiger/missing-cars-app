@@ -1,14 +1,12 @@
 package com.wherismyvehicle.whereismyvehicle.presenters;
 
 import android.util.Patterns;
-
 import com.wherismyvehicle.whereismyvehicle.data.authentication.Singleton;
-import com.wherismyvehicle.whereismyvehicle.views.RegisterFragment;
 
 public class RegisterFragmentPresenter {
-    private RegisterFragment fragment;
+    private View fragment;
 
-    public RegisterFragmentPresenter(RegisterFragment registerFragment) {
+    public RegisterFragmentPresenter(View registerFragment) {
         this.fragment = registerFragment;
 
         Singleton.getInstance().setOnRegisteredHandler(new Runnable() {
@@ -25,7 +23,7 @@ public class RegisterFragmentPresenter {
         });
     }
 
-    public void register(String email, String password, String passwordConfirm) {
+    public void register(final String email, final String password, String passwordConfirm) {
         if(!Patterns.EMAIL_ADDRESS.matcher(email.toLowerCase().trim()).matches()){
             fragment.invalidEmail();
             return;
@@ -41,9 +39,12 @@ public class RegisterFragmentPresenter {
             return;
         }
 
-        Singleton.getInstance().logout();
-
-        Singleton.getInstance().register(email, password);
+        Singleton.getInstance().setOnLogoutHandler(new Runnable() {
+            @Override
+            public void run() {
+                Singleton.getInstance().register(email, password);
+            }
+        }).logout();
     }
 
     public interface View {

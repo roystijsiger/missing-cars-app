@@ -1,22 +1,21 @@
 package com.wherismyvehicle.whereismyvehicle.views.adapters;
 
-        import android.content.Context;
-        import android.content.Intent;
-        import android.net.Uri;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.ArrayAdapter;
-        import android.widget.ImageButton;
-        import android.widget.TextView;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
-        import com.wherismyvehicle.whereismyvehicle.models.Vehicle;
-        import com.wherismyvehicle.whereismyvehicle.views.NewSightingActivity;
-        import com.wherismyvehicle.whereismyvehicle.views.R;
-        import com.wherismyvehicle.whereismyvehicle.views.SightingsActivity;
-
-        import java.util.ArrayList;
-        import java.util.Locale;
+import com.wherismyvehicle.whereismyvehicle.models.Vehicle;
+import com.wherismyvehicle.whereismyvehicle.views.NewSightingActivity;
+import com.wherismyvehicle.whereismyvehicle.views.SightingsActivity;
+import com.wherismyvehicle.whereismyvehicle.views.R;
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class VehiclesAdapter extends ArrayAdapter<Vehicle> {
     private boolean onlyMine;

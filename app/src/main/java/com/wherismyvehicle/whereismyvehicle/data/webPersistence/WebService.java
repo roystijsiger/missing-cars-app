@@ -18,11 +18,11 @@ public class WebService {
     private final Context context;
     private String host;
 
-    public WebService(Context context) {
+    protected WebService(Context context) {
         this(context, "http://whereismyvehicle.azurewebsites.net/");
     }
 
-    public WebService(Context context, String host) {
+    private WebService(Context context, String host) {
         this.context = context;
         this.host = host;
         this.client = new OkHttpClient();

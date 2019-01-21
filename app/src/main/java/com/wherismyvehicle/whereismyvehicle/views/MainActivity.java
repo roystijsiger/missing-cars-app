@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch(item.getItemId()){
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            switch(menuItem.getItemId()){
                 case R.id.nav_profile:
                     if(Singleton.getInstance().isAuthenticated()) {
                         replaceFragment(profileFragment);

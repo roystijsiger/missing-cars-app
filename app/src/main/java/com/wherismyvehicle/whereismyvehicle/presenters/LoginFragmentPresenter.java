@@ -25,14 +25,18 @@ public class LoginFragmentPresenter {
         });
     }
 
-    public void login(String email, String password){
+    public void login(final String email, final String password){
         if(!Patterns.EMAIL_ADDRESS.matcher(email.toLowerCase().trim()).matches()){
             fragment.invalidEmail();
             return;
         }
 
-        Singleton.getInstance().logout();
-        Singleton.getInstance().login(email, password);
+        Singleton.getInstance().setOnLogoutHandler(new Runnable() {
+            @Override
+            public void run() {
+                Singleton.getInstance().login(email, password);
+            }
+        }).logout();
     }
 
     public interface View {

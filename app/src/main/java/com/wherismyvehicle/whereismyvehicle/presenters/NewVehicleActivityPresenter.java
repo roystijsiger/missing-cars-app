@@ -48,6 +48,6 @@ public class NewVehicleActivityPresenter{
     }
 
     private boolean isStringNullOrEmpty(String value){
-        return value.equals(null) || value.equals("");
+        return value == null || value.equals("");
     }
 }

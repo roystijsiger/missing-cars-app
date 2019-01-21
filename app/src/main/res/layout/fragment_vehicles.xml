@@ -23,7 +23,7 @@
         />
 
     <SeekBar
-        android:id="@+id/seekbar_vehicle"
+        android:id="@+id/seekBar_vehicle"
         android:layout_width="match_parent"
         android:layout_toStartOf="@+id/txt_kilometer"
         android:layout_height="wrap_content"
@@ -39,9 +39,9 @@
         android:layout_below="@id/txt_vehicle_title"/>
 
     <ListView
-        android:id="@+id/listview_vehicles"
+        android:id="@+id/list_view_vehicles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/seekbar_vehicle"
+        android:layout_below="@id/seekBar_vehicle"
         android:layout_marginTop="5dp" />
 </RelativeLayout>
