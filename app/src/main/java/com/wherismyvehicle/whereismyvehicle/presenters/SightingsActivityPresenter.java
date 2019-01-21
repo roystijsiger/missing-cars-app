@@ -9,6 +9,7 @@ import com.wherismyvehicle.whereismyvehicle.models.Sighting;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 
 public class SightingsActivityPresenter {
     private View view;
@@ -16,7 +17,7 @@ public class SightingsActivityPresenter {
 
     public SightingsActivityPresenter(View view, int vehicleId){
         this.view = view;
-        dataPersistence = new ModelPersistenceService<>(view.getContext(), String.format("vehicles/%d/sightings",vehicleId));
+        dataPersistence = new ModelPersistenceService<>(view.getContext(), String.format(Locale.ENGLISH, "vehicles/%d/sightings", vehicleId));
     }
 
     public void loadSightings(){

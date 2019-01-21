@@ -38,9 +38,9 @@ public class SightingsActivity extends AppCompatActivity implements SightingsAct
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                ListView sightingsListview = findViewById(R.id.listview_sightings);
+                ListView sightingsListView = findViewById(R.id.listview_sightings);
                 SightingsAdapter sightingsAdapter = new SightingsAdapter(getContext(), arrayList);
-                sightingsListview.setAdapter(sightingsAdapter);
+                sightingsListView.setAdapter(sightingsAdapter);
             }
         });
 

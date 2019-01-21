@@ -9,18 +9,20 @@ import com.wherismyvehicle.whereismyvehicle.data.DataPersistenceActionEventHandl
 import com.wherismyvehicle.whereismyvehicle.data.webPersistence.ModelPersistenceService;
 import com.wherismyvehicle.whereismyvehicle.models.Sighting;
 
+import java.util.Locale;
+
 public class NewSightingActivityPresenter {
     private View view;
     private DataPersistence<Sighting> dataPersistence;
 
     public NewSightingActivityPresenter(View view){
         this.view = view;
-        dataPersistence = new ModelPersistenceService<>(view.getContext(),String.format("vehicles/%d/sightings", view.getVehicleId()));
+        dataPersistence = new ModelPersistenceService<>(view.getContext(),String.format(Locale.ENGLISH, "vehicles/%d/sightings", view.getVehicleId()));
     }
 
     public void addNewSightings(Location location, String photo){
         if(isStringNullOrEmpty(photo) || location == null){
-            String message = "Either you haven't taken a picture or your location wasnt provided.";
+            String message = "Either you haven't taken a picture or your location wasn't provided.";
             view.showToastMsg(message);
         }
         else{
