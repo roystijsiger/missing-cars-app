@@ -1,4 +1,4 @@
-package com.wherismyvehicle.whereismyvehicle.Data;
+package com.wherismyvehicle.whereismyvehicle.data;
 
 public interface DataPersistence <T> {
     DataPersistenceAction<T> Fetch(Class serializationClass, Object id);

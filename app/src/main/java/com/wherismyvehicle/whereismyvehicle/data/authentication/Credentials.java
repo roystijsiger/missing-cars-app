@@ -1,10 +1,11 @@
-package com.wherismyvehicle.whereismyvehicle.Data.Authentication;
+package com.wherismyvehicle.whereismyvehicle.data.authentication;
 
+@SuppressWarnings({"FieldCanBeLocal", "unused"})
 class Credentials {
     private String email;
     private String password;
 
-    public Credentials(String email, String password) {
+    Credentials(String email, String password) {
         this.email = email;
         this.password = password;
     }

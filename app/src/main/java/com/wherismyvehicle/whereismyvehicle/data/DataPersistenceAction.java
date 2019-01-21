@@ -1,4 +1,4 @@
-package com.wherismyvehicle.whereismyvehicle.Data;
+package com.wherismyvehicle.whereismyvehicle.data;
 
 import java.util.ArrayList;
 
@@ -19,7 +19,7 @@ public class DataPersistenceAction<T> {
         return this;
     }
 
-    DataPersistenceAction<T> Invoke(T object) {
+    protected DataPersistenceAction<T> Invoke(T object) {
         invoked = true;
         this.object = object;
 

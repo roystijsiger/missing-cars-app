@@ -1,10 +1,8 @@
-package com.wherismyvehicle.whereismyvehicle.Views.Adapters;
+package com.wherismyvehicle.whereismyvehicle.views.adapters;
 
         import android.content.Context;
         import android.content.Intent;
         import android.net.Uri;
-        import android.support.v4.app.Fragment;
-        import android.support.v4.app.FragmentTransaction;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
@@ -12,13 +10,10 @@ package com.wherismyvehicle.whereismyvehicle.Views.Adapters;
         import android.widget.ImageButton;
         import android.widget.TextView;
 
-        import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationSingleton;
-        import com.wherismyvehicle.whereismyvehicle.Models.Vehicle;
-        import com.wherismyvehicle.whereismyvehicle.Views.MyVehiclesFragment;
-        import com.wherismyvehicle.whereismyvehicle.Views.NewSightingActivity;
-        import com.wherismyvehicle.whereismyvehicle.Views.R;
-        import com.wherismyvehicle.whereismyvehicle.Views.SightingsActivity;
-        import com.wherismyvehicle.whereismyvehicle.Views.SightingsFragment;
+        import com.wherismyvehicle.whereismyvehicle.models.Vehicle;
+        import com.wherismyvehicle.whereismyvehicle.views.NewSightingActivity;
+        import com.wherismyvehicle.whereismyvehicle.views.R;
+        import com.wherismyvehicle.whereismyvehicle.views.SightingsActivity;
 
         import java.util.ArrayList;
         import java.util.Locale;

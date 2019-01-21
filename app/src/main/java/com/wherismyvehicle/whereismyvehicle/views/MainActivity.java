@@ -1,4 +1,4 @@
-package com.wherismyvehicle.whereismyvehicle.Views;
+package com.wherismyvehicle.whereismyvehicle.views;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -7,13 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationSingleton;
+import com.wherismyvehicle.whereismyvehicle.data.authentication.Singleton;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private VehiclesFragment vehiclesFragment;
-    private SightingsFragment sightingsFragment;
     private LoginFragment loginFragment;
     private RegisterFragment registerFragment;
     private ProfileFragment profileFragment;
@@ -23,10 +22,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        AuthenticationSingleton.instantiate(this);
+        Singleton.instantiate(this);
 
         vehiclesFragment = new VehiclesFragment();
-        sightingsFragment = new SightingsFragment();
         loginFragment = createLoginFragment();
         registerFragment = createRegisterFragment();
         profileFragment = createProfileFragment();
@@ -39,17 +37,14 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch(item.getItemId()){
                 case R.id.nav_profile:
-                    if(AuthenticationSingleton.getInstance().isAuthenticated()) {
+                    if(Singleton.getInstance().isAuthenticated()) {
                         replaceFragment(profileFragment);
                     }
                     else {
                         replaceFragment(loginFragment);
                     }
-
                     break;
-                //case R.id.nav_sightings:
-                //    replaceFragment(sightingsFragment);
-                //    break;
+
                 case R.id.nav_vehicles:
                     replaceFragment(vehiclesFragment);
                     break;

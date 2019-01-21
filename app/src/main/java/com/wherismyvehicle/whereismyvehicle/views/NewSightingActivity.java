@@ -1,4 +1,4 @@
-package com.wherismyvehicle.whereismyvehicle.Views;
+package com.wherismyvehicle.whereismyvehicle.views;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,7 +12,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.AttributeSet;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -25,7 +24,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.wherismyvehicle.whereismyvehicle.Presenters.NewSightingActivityPresenter;
+import com.wherismyvehicle.whereismyvehicle.presenters.NewSightingActivityPresenter;
 
 import java.io.ByteArrayOutputStream;
 

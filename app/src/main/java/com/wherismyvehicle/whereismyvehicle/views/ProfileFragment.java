@@ -1,4 +1,4 @@
-package com.wherismyvehicle.whereismyvehicle.Views;
+package com.wherismyvehicle.whereismyvehicle.views;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationSingleton;
-import com.wherismyvehicle.whereismyvehicle.Presenters.ProfileFragmentPresenter;
+import com.wherismyvehicle.whereismyvehicle.data.authentication.Singleton;
+import com.wherismyvehicle.whereismyvehicle.presenters.ProfileFragmentPresenter;
 
 public class ProfileFragment extends Fragment implements ProfileFragmentPresenter.View {
 
@@ -34,12 +34,12 @@ public class ProfileFragment extends Fragment implements ProfileFragmentPresente
         this.view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         emailTextView = view.findViewById(R.id.txt_email_logged_in);
-        emailTextView.setText(AuthenticationSingleton.getInstance().getEmail());
+        emailTextView.setText(Singleton.getInstance().getEmail());
         Button logoutButton = view.findViewById(R.id.btn_logout);
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AuthenticationSingleton.getInstance().logout();
+                Singleton.getInstance().logout();
 
                 onLoggedOut.run();
             }

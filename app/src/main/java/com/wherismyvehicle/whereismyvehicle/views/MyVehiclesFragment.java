@@ -1,4 +1,4 @@
-package com.wherismyvehicle.whereismyvehicle.Views;
+package com.wherismyvehicle.whereismyvehicle.views;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,9 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.wherismyvehicle.whereismyvehicle.Models.Vehicle;
-import com.wherismyvehicle.whereismyvehicle.Presenters.MyVehiclesFragmentPresenter;
-import com.wherismyvehicle.whereismyvehicle.Views.Adapters.VehiclesAdapter;
+import com.wherismyvehicle.whereismyvehicle.models.Vehicle;
+import com.wherismyvehicle.whereismyvehicle.presenters.MyVehiclesFragmentPresenter;
+import com.wherismyvehicle.whereismyvehicle.views.adapters.VehiclesAdapter;
 
 import java.util.ArrayList;
 
@@ -43,10 +43,6 @@ public class MyVehiclesFragment extends Fragment implements MyVehiclesFragmentPr
 
     public Context getContext(){
         return getActivity();
-    }
-
-    public void test(){
-
     }
 
     @Nullable

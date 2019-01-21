@@ -1,14 +1,14 @@
-package com.wherismyvehicle.whereismyvehicle.Data.Authentication;
+package com.wherismyvehicle.whereismyvehicle.data.authentication;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
 
-import com.wherismyvehicle.whereismyvehicle.Data.LocalPersistence.AppDatabase;
-import com.wherismyvehicle.whereismyvehicle.Models.User;
+import com.wherismyvehicle.whereismyvehicle.data.localPersistence.AppDatabase;
+import com.wherismyvehicle.whereismyvehicle.models.User;
 
 // Singleton
-public class AuthenticationSingleton {
-    private static AuthenticationSingleton instance;
+public class Singleton {
+    private static Singleton instance;
     private static AppDatabase db;
 
     private Service service;
@@ -19,16 +19,16 @@ public class AuthenticationSingleton {
     private Runnable onLogoutHandler;
 
 
-    public AuthenticationSingleton(Context context) {
+    private Singleton(Context context) {
         service = new Service(context);
     }
 
-    public static AuthenticationSingleton getInstance() {
+    public static Singleton getInstance() {
         return instance;
     }
 
     public static void instantiate(Context context) {
-        instance = new AuthenticationSingleton(context);
+        instance = new Singleton(context);
         db = Room.databaseBuilder(context, AppDatabase.class, "whereismyvehicle-db").allowMainThreadQueries().build();
     }
 
@@ -69,57 +69,57 @@ public class AuthenticationSingleton {
         this.invokeOnLogoutHandler();
     }
 
-    public void invokeOnRegisteredHandler() {
+    void invokeOnRegisteredHandler() {
         if(onRegisteredHandler != null) {
             onRegisteredHandler.run();
         }
     }
 
-    public AuthenticationSingleton setOnRegisteredHandler(Runnable onRegisteredHandler) {
+    public Singleton setOnRegisteredHandler(Runnable onRegisteredHandler) {
         this.onRegisteredHandler = onRegisteredHandler;
         return this;
     }
 
-    public void invokeOnRegistrationFailedHandler() {
+    void invokeOnRegistrationFailedHandler() {
         if (onRegistrationFailedHandler != null) {
             onRegistrationFailedHandler.run();
         }
     }
 
-    public AuthenticationSingleton setOnRegistrationFailedHandler(Runnable onRegistrationFailedHandler) {
+    public Singleton setOnRegistrationFailedHandler(Runnable onRegistrationFailedHandler) {
         this.onRegistrationFailedHandler = onRegistrationFailedHandler;
         return this;
     }
 
-    public void invokeOnLoggedInHandler() {
+    void invokeOnLoggedInHandler() {
         if (onLoggedInHandler != null) {
             onLoggedInHandler.run();
         }
     }
 
-     public AuthenticationSingleton setOnLoggedInHandler(Runnable onLoggedInHandler) {
+     public Singleton setOnLoggedInHandler(Runnable onLoggedInHandler) {
         this.onLoggedInHandler = onLoggedInHandler;
         return this;
     }
 
-    public void invokeOnLoginFailedHandler() {
+    void invokeOnLoginFailedHandler() {
         if (onLoginFailedHandler != null) {
             onLoginFailedHandler.run();
         }
     }
 
-    public AuthenticationSingleton setOnLoginFailedHandler(Runnable onLoginFailedHandler) {
+    public Singleton setOnLoginFailedHandler(Runnable onLoginFailedHandler) {
         this.onLoginFailedHandler = onLoginFailedHandler;
         return this;
     }
 
-    public void invokeOnLogoutHandler() {
+    private void invokeOnLogoutHandler() {
         if (onLogoutHandler != null) {
             onLogoutHandler.run();
         }
     }
 
-    public AuthenticationSingleton setOnLogoutHandler(Runnable onLogoutHandler) {
+    public Singleton setOnLogoutHandler(Runnable onLogoutHandler) {
         this.onLogoutHandler = onLogoutHandler;
         return this;
     }

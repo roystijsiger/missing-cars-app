@@ -1,11 +1,11 @@
-package com.wherismyvehicle.whereismyvehicle.Data;
+package com.wherismyvehicle.whereismyvehicle.data.webPersistence;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationSingleton;
-import com.wherismyvehicle.whereismyvehicle.Data.WebPersistence.Exceptions.ConnectionUnavailableException;
+import com.wherismyvehicle.whereismyvehicle.data.authentication.Singleton;
+import com.wherismyvehicle.whereismyvehicle.data.webPersistence.exceptions.ConnectionUnavailableException;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -49,7 +49,7 @@ public class WebService {
     }
 
     private String getToken(){
-        String token = AuthenticationSingleton.getInstance().getToken();
+        String token = Singleton.getInstance().getToken();
         if(token == null) return null;
 
         return "Bearer ".concat(token);

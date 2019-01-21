@@ -1,7 +1,6 @@
-package com.wherismyvehicle.whereismyvehicle.Presenters;
+package com.wherismyvehicle.whereismyvehicle.presenters;
 
-import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationSingleton;
-import com.wherismyvehicle.whereismyvehicle.Models.User;
+import com.wherismyvehicle.whereismyvehicle.models.User;
 
 public class ProfileFragmentPresenter {
     private User user;

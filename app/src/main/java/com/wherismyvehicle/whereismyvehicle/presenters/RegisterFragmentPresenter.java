@@ -1,9 +1,9 @@
-package com.wherismyvehicle.whereismyvehicle.Presenters;
+package com.wherismyvehicle.whereismyvehicle.presenters;
 
 import android.util.Patterns;
 
-import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationSingleton;
-import com.wherismyvehicle.whereismyvehicle.Views.RegisterFragment;
+import com.wherismyvehicle.whereismyvehicle.data.authentication.Singleton;
+import com.wherismyvehicle.whereismyvehicle.views.RegisterFragment;
 
 public class RegisterFragmentPresenter {
     private RegisterFragment fragment;
@@ -11,13 +11,13 @@ public class RegisterFragmentPresenter {
     public RegisterFragmentPresenter(RegisterFragment registerFragment) {
         this.fragment = registerFragment;
 
-        AuthenticationSingleton.getInstance().setOnRegisteredHandler(new Runnable() {
+        Singleton.getInstance().setOnRegisteredHandler(new Runnable() {
             @Override
             public void run() {
                 fragment.onRegistered();
             }
         });
-        AuthenticationSingleton.getInstance().setOnRegistrationFailedHandler(new Runnable() {
+        Singleton.getInstance().setOnRegistrationFailedHandler(new Runnable() {
             @Override
             public void run() {
                 fragment.onRegisteredFailed();
@@ -41,9 +41,9 @@ public class RegisterFragmentPresenter {
             return;
         }
 
-        AuthenticationSingleton.getInstance().logout();
+        Singleton.getInstance().logout();
 
-        AuthenticationSingleton.getInstance().register(email, password);
+        Singleton.getInstance().register(email, password);
     }
 
     public interface View {

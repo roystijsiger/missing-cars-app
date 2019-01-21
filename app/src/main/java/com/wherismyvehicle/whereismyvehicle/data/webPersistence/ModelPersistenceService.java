@@ -1,13 +1,11 @@
-package com.wherismyvehicle.whereismyvehicle.Data;
+package com.wherismyvehicle.whereismyvehicle.data.webPersistence;
 
 import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 
 import com.google.gson.Gson;
+import com.wherismyvehicle.whereismyvehicle.data.DataPersistence;
+import com.wherismyvehicle.whereismyvehicle.data.DataPersistenceAction;
 
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 

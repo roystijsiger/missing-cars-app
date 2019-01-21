@@ -1,4 +1,4 @@
-package com.wherismyvehicle.whereismyvehicle.Models;
+package com.wherismyvehicle.whereismyvehicle.models;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;

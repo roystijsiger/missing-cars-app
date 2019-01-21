@@ -1,4 +1,4 @@
-package com.wherismyvehicle.whereismyvehicle.Views;
+package com.wherismyvehicle.whereismyvehicle.views;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,9 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.wherismyvehicle.whereismyvehicle.Data.ModelPersistenceService;
-import com.wherismyvehicle.whereismyvehicle.Presenters.SightingsActivityPresenter;
-import com.wherismyvehicle.whereismyvehicle.Views.Adapters.SightingsAdapter;
+import com.wherismyvehicle.whereismyvehicle.presenters.SightingsActivityPresenter;
+import com.wherismyvehicle.whereismyvehicle.views.adapters.SightingsAdapter;
 
 import java.util.ArrayList;
 

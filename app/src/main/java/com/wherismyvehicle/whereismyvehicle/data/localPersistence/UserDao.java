@@ -1,10 +1,10 @@
-package com.wherismyvehicle.whereismyvehicle.Data.AppDatabase;
+package com.wherismyvehicle.whereismyvehicle.data.localPersistence;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
-import com.wherismyvehicle.whereismyvehicle.Models.User;
+import com.wherismyvehicle.whereismyvehicle.models.User;
 
 @Dao
 public interface UserDao {

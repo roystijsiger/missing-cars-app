@@ -1,12 +1,12 @@
-package com.wherismyvehicle.whereismyvehicle.Data.Authentication;
+package com.wherismyvehicle.whereismyvehicle.data.authentication;
 
 import android.content.Context;
 
 import com.google.gson.Gson;
-import com.wherismyvehicle.whereismyvehicle.Data.DataPersistenceActionEventHandler;
-import com.wherismyvehicle.whereismyvehicle.Data.WebPersistence.DataPersistenceHttpAction;
-import com.wherismyvehicle.whereismyvehicle.Data.WebPersistence.WebService;
-import com.wherismyvehicle.whereismyvehicle.Models.User;
+import com.wherismyvehicle.whereismyvehicle.data.DataPersistenceActionEventHandler;
+import com.wherismyvehicle.whereismyvehicle.data.webPersistence.DataPersistenceHttpAction;
+import com.wherismyvehicle.whereismyvehicle.data.webPersistence.WebService;
+import com.wherismyvehicle.whereismyvehicle.models.User;
 
 import java.io.IOException;
 
@@ -31,15 +31,15 @@ public class Service extends WebService {
         DataPersistenceHttpAction<User> task = new DataPersistenceHttpAction<User>(User.class){
             @Override
             public void onFailure(Call call, IOException e) {
-                AuthenticationSingleton.getInstance().invokeOnRegistrationFailedHandler();
+                Singleton.getInstance().invokeOnRegistrationFailedHandler();
             }
         };
 
         task.AddHandler(new DataPersistenceActionEventHandler<User>() {
             @Override
             public void OnResult(User result) {
-                AuthenticationSingleton.getInstance().setUser(result);
-                AuthenticationSingleton.getInstance().invokeOnRegisteredHandler();
+                Singleton.getInstance().setUser(result);
+                Singleton.getInstance().invokeOnRegisteredHandler();
             }
         });
 
@@ -58,15 +58,15 @@ public class Service extends WebService {
         DataPersistenceHttpAction<User> task = new DataPersistenceHttpAction<User>(User.class){
             @Override
             public void onFailure(Call call, IOException e) {
-                AuthenticationSingleton.getInstance().invokeOnLoginFailedHandler();
+                Singleton.getInstance().invokeOnLoginFailedHandler();
             }
         };
 
         task.AddHandler(new DataPersistenceActionEventHandler<User>() {
             @Override
             public void OnResult(User result) {
-                AuthenticationSingleton.getInstance().setUser(result);
-                AuthenticationSingleton.getInstance().invokeOnLoggedInHandler();
+                Singleton.getInstance().setUser(result);
+                Singleton.getInstance().invokeOnLoggedInHandler();
             }
         });
 

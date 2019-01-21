@@ -1,10 +1,9 @@
-package com.wherismyvehicle.whereismyvehicle.Views.Adapters;
+package com.wherismyvehicle.whereismyvehicle.views.adapters;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.net.Uri;
 import android.util.Base64;
 import android.view.LayoutInflater;
@@ -13,10 +12,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.wherismyvehicle.whereismyvehicle.Models.Sighting;
-import com.wherismyvehicle.whereismyvehicle.Views.R;
+import com.wherismyvehicle.whereismyvehicle.models.Sighting;
+import com.wherismyvehicle.whereismyvehicle.views.R;
 
 import java.util.ArrayList;
 import java.util.Locale;

@@ -1,11 +1,11 @@
-package com.wherismyvehicle.whereismyvehicle.Presenters;
+package com.wherismyvehicle.whereismyvehicle.presenters;
 
 import android.content.Context;
 
-import com.wherismyvehicle.whereismyvehicle.Data.DataPersistence;
-import com.wherismyvehicle.whereismyvehicle.Data.DataPersistenceActionEventHandler;
-import com.wherismyvehicle.whereismyvehicle.Data.ModelPersistenceService;
-import com.wherismyvehicle.whereismyvehicle.Models.Sighting;
+import com.wherismyvehicle.whereismyvehicle.data.DataPersistence;
+import com.wherismyvehicle.whereismyvehicle.data.DataPersistenceActionEventHandler;
+import com.wherismyvehicle.whereismyvehicle.data.webPersistence.ModelPersistenceService;
+import com.wherismyvehicle.whereismyvehicle.models.Sighting;
 
 import java.util.ArrayList;
 import java.util.Arrays;

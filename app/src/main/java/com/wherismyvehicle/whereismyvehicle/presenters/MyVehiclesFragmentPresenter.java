@@ -1,28 +1,26 @@
-package com.wherismyvehicle.whereismyvehicle.Presenters;
+package com.wherismyvehicle.whereismyvehicle.presenters;
 
 import android.content.Context;
 import android.content.Intent;
 
-import com.wherismyvehicle.whereismyvehicle.Data.Authentication.AuthenticationSingleton;
-import com.wherismyvehicle.whereismyvehicle.Data.DataPersistence;
-import com.wherismyvehicle.whereismyvehicle.Data.DataPersistenceActionEventHandler;
-import com.wherismyvehicle.whereismyvehicle.Data.ModelPersistenceService;
-import com.wherismyvehicle.whereismyvehicle.Models.Vehicle;
-import com.wherismyvehicle.whereismyvehicle.Views.NewVehicleActivity;
+import com.wherismyvehicle.whereismyvehicle.data.authentication.Singleton;
+import com.wherismyvehicle.whereismyvehicle.data.DataPersistence;
+import com.wherismyvehicle.whereismyvehicle.data.DataPersistenceActionEventHandler;
+import com.wherismyvehicle.whereismyvehicle.data.webPersistence.ModelPersistenceService;
+import com.wherismyvehicle.whereismyvehicle.models.Vehicle;
+import com.wherismyvehicle.whereismyvehicle.views.NewVehicleActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MyVehiclesFragmentPresenter {
-    private ArrayList<Vehicle> vehicles;
     private View view;
     private DataPersistence<Vehicle> dataPersistence;
 
     public MyVehiclesFragmentPresenter(View view) {
         this.view = view;
 
-        dataPersistence = new ModelPersistenceService<>(view.getContext(), String.format("vehicles?email=%s", AuthenticationSingleton.getInstance().getEmail()));
-        vehicles = new ArrayList<>();
+        dataPersistence = new ModelPersistenceService<>(view.getContext(), String.format("vehicles?email=%s", Singleton.getInstance().getEmail()));
     }
 
     public void loadVehicles(){

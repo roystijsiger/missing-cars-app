@@ -1,10 +1,11 @@
-package com.wherismyvehicle.whereismyvehicle.Models;
+package com.wherismyvehicle.whereismyvehicle.models;
 
 import android.location.Location;
 import android.util.Log;
 
 import java.util.ArrayList;
 
+@SuppressWarnings({"FieldCanBeLocal", "unused"})
 public class Vehicle {
     private int id;
     private String type;

@@ -1,6 +1,8 @@
-package com.wherismyvehicle.whereismyvehicle.Data;
+package com.wherismyvehicle.whereismyvehicle.data.webPersistence;
 
 import com.google.gson.Gson;
+import com.wherismyvehicle.whereismyvehicle.data.DataPersistenceAction;
+
 import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;

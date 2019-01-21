@@ -1,4 +1,4 @@
-package com.wherismyvehicle.whereismyvehicle.Views;
+package com.wherismyvehicle.whereismyvehicle.views;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,9 +19,8 @@ import com.google.android.gms.location.places.PlaceDetectionClient;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.model.LatLng;
-import com.wherismyvehicle.whereismyvehicle.Models.VehicleType;
-import com.wherismyvehicle.whereismyvehicle.Presenters.NewVehicleActivityPresenter;
-import com.wherismyvehicle.whereismyvehicle.Presenters.ProfileFragmentPresenter;
+import com.wherismyvehicle.whereismyvehicle.models.VehicleType;
+import com.wherismyvehicle.whereismyvehicle.presenters.NewVehicleActivityPresenter;
 
 public class NewVehicleActivity extends AppCompatActivity implements NewVehicleActivityPresenter.View {
     private final static int PLACE_PICKER_REQUEST = 999;

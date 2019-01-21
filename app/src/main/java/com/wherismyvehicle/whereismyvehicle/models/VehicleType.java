@@ -1,4 +1,4 @@
-package com.wherismyvehicle.whereismyvehicle.Models;
+package com.wherismyvehicle.whereismyvehicle.models;
 
 public enum VehicleType {
     Car("Car"),

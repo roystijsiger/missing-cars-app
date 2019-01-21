@@ -1,4 +1,4 @@
-package com.wherismyvehicle.whereismyvehicle.Views;
+package com.wherismyvehicle.whereismyvehicle.views;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.wherismyvehicle.whereismyvehicle.Presenters.LoginFragmentPresenter;
+import com.wherismyvehicle.whereismyvehicle.presenters.LoginFragmentPresenter;
 
 
 public class LoginFragment extends Fragment implements LoginFragmentPresenter.View {

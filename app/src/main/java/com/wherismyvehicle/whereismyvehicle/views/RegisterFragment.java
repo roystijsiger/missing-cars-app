@@ -1,4 +1,4 @@
-package com.wherismyvehicle.whereismyvehicle.Views;
+package com.wherismyvehicle.whereismyvehicle.views;
 
 
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.wherismyvehicle.whereismyvehicle.Presenters.RegisterFragmentPresenter;
+import com.wherismyvehicle.whereismyvehicle.presenters.RegisterFragmentPresenter;
 
 
 public class RegisterFragment extends Fragment implements RegisterFragmentPresenter.View {
