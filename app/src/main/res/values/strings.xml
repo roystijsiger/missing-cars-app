@@ -6,4 +6,7 @@
     <string name="google_api_key">AIzaSyD-tB2AUGvcF3zrzAmM4aODyDU3qr0jD_k</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="content_description_camera_icon">Camera icon</string>
+    <string name="sighting_take_picture_instructions">Please take a picture of the vehicle</string>
+    <string name="post_sighting_button_text">Post sighting</string>
 </resources>

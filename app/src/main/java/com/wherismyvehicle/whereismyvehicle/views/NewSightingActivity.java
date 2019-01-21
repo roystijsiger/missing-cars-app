@@ -88,8 +88,7 @@ public class NewSightingActivity extends AppCompatActivity implements NewSightin
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                String toastMsg = String.format(message);
-                Toast.makeText(activity, toastMsg, Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, message, Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -100,10 +99,11 @@ public class NewSightingActivity extends AppCompatActivity implements NewSightin
             Bitmap imageBitmap = (Bitmap) extras.get("data");
 
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+            if (imageBitmap != null) {
+                imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+            }
             byte[] byteArray = byteArrayOutputStream .toByteArray();
-            String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
-            this.photo = encoded;
+            this.photo = Base64.encodeToString(byteArray, Base64.DEFAULT);
 
             ImageView imagePreview = findViewById(R.id.img_taken_picture);
             imagePreview.setImageBitmap(imageBitmap);
@@ -146,11 +146,11 @@ public class NewSightingActivity extends AppCompatActivity implements NewSightin
 
     private void getLastLocation(){
         try{
-            Task locationResult = fusedLocationProviderClient.getLastLocation();
+            Task<Location> locationResult = fusedLocationProviderClient.getLastLocation();
             locationResult.addOnSuccessListener(new OnSuccessListener<Location>() {
                 @Override
-                public void onSuccess(Location locationResult) {
-                    location = locationResult;
+                public void onSuccess(Location tResult) {
+                    location = tResult;
                 }
             });
         }

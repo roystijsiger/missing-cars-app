@@ -35,7 +35,8 @@ public class NewSightingActivityPresenter {
                 });
             }
             catch(Exception e){
-                String message = String.format("De app kon geen sighting toevoegen probeer het op een later tijdstip nog eens.");
+                // TODO: English
+                String message = "De app kon geen sighting toevoegen probeer het op een later tijdstip nog eens.";
                 view.showToastMsg(message);
             }
         }
