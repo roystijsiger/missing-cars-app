@@ -112,6 +112,7 @@ public class NewVehicleActivity extends AppCompatActivity implements NewVehicleA
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PLACE_PICKER_REQUEST) {
             if (resultCode == RESULT_OK) {
+                // TODO: Replace deprecated method
                 Place place = PlacePicker.getPlace(data, this);
                 String toastMsg = String.format("Place: %s", place.getName());
                 this.locationSelected = new LatLng(place.getLatLng().latitude, place.getLatLng().longitude);

@@ -31,6 +31,6 @@ public class SightingsActivityPresenter {
 
     public interface View{
         Context getContext();
-        void setListView(ArrayList arrayList);
+        void setListView(ArrayList<Sighting> arrayList);
     }
 }

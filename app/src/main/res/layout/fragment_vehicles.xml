@@ -2,7 +2,14 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:padding="@dimen/DefaultFragmentMargin">
+
+    <TextView
+        android:id="@+id/txt_vehicles_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reported vehicles missing"
+        style="@style/TextAppearance.MaterialComponents.Headline5"/>
 
     <TextView
         android:id="@+id/txt_vehicle_title"
@@ -12,6 +19,7 @@
         android:layout_centerHorizontal="true"
         android:textSize="12sp"
         android:layout_alignParentStart="true"
+        android:layout_below="@id/txt_vehicles_title"
         />
 
     <SeekBar
@@ -36,14 +44,4 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/seekbar_vehicle"
         android:layout_marginTop="5dp" />
-
-    <ImageButton
-        android:id="@+id/img_add_vehicle"
-        android:src="@drawable/ic_add_circle"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:background="?android:attr/colorBackground"
-        android:contentDescription="@string/add_vehicle_button_content_descriptor"/>
 </RelativeLayout>

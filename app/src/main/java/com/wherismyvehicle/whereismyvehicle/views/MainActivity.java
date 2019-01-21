@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private LoginFragment loginFragment;
     private RegisterFragment registerFragment;
     private ProfileFragment profileFragment;
+    private MyVehiclesFragment myVehiclesFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         loginFragment = createLoginFragment();
         registerFragment = createRegisterFragment();
         profileFragment = createProfileFragment();
+        myVehiclesFragment = new MyVehiclesFragment();
 
         replaceFragment(vehiclesFragment);
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
@@ -63,6 +65,14 @@ public class MainActivity extends AppCompatActivity {
                 replaceFragment(loginFragment);
             }
         });
+
+        fragment.setOnOpenMissingVehicles(new Runnable() {
+            @Override
+            public void run() {
+                replaceFragment(myVehiclesFragment);
+            }
+        });
+
         return fragment;
     }
 

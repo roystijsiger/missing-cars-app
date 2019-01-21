@@ -13,7 +13,7 @@
     <string name="show_vehicle_location_button_content_description">Show vehicle location</string>
     <string name="vehicle_license_hint">Vehicle license</string>
     <string name="profile_email_label_text">Email</string>
-    <string name="my_vehicles_button">My vehicles</string>
+    <string name="my_vehicles_button">My vehicles / report missing</string>
     <string name="km_unit">km</string>
     <string name="add_vehicle_button_content_descriptor">Add vehicle button</string>
     <string name="vehicle_type_label_text">Type</string>

@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 public class MyVehiclesFragment extends Fragment implements MyVehiclesFragmentPresenter.View {
     private MyVehiclesFragmentPresenter presenter;
-    private View fragmentView;
     private ListView listViewVehicles;
 
     @Override
@@ -48,7 +47,7 @@ public class MyVehiclesFragment extends Fragment implements MyVehiclesFragmentPr
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        fragmentView = inflater.inflate(R.layout.fragment_my_vehicles, container, false);
+        View fragmentView = inflater.inflate(R.layout.fragment_my_vehicles, container, false);
         listViewVehicles = fragmentView.findViewById(R.id.listview_vehicles);
         presenter.loadVehicles();
 
@@ -58,6 +57,6 @@ public class MyVehiclesFragment extends Fragment implements MyVehiclesFragmentPr
                 presenter.openNewVehicleForm();
             }
         });
-        return this.fragmentView;
+        return fragmentView;
     }
 }

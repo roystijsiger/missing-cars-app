@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class VehiclesFragmentPresenter {
-    private ArrayList<Vehicle> vehicles;
     private View view;
     private DataPersistence<Vehicle> dataPersistence;
 
@@ -21,7 +20,6 @@ public class VehiclesFragmentPresenter {
         this.view = view;
 
         dataPersistence = new ModelPersistenceService<>(view.getContext(), "vehicles");
-        vehicles = new ArrayList<>();
     }
 
     public void loadVehicles(){

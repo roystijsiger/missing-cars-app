@@ -33,6 +33,7 @@ public class NewSightingActivityPresenter {
                     public void OnResult(Sighting result) {
                         String message = String.format("Sighting for vehicle %s has been posted", view.getVehicleId() );
                         view.showToastMsg(message);
+                        // TODO: Intent back to vehicles fragment
                     }
                 });
             }

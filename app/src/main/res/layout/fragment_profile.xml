@@ -2,7 +2,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="15dp">
+    android:layout_margin="@dimen/DefaultFragmentMargin">
+
     <TextView
         android:id="@+id/txt_profile_title"
         android:layout_width="match_parent"
@@ -16,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_profile_title"
         android:text="@string/profile_email_label_text"
-        android:layout_marginRight="4dp"
+        android:layout_marginEnd="4dp"
         style="@style/TextAppearance.MaterialComponents.Headline6"/>
 
     <TextView

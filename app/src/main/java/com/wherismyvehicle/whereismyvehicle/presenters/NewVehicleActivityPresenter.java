@@ -30,14 +30,13 @@ public class NewVehicleActivityPresenter{
             dataPersistence.Insert(Vehicle.class, vehicle).AddHandler(new DataPersistenceActionEventHandler<Vehicle>() {
                 @Override
                 public void OnResult(Vehicle result) {
-
                     String message = String.format("License %s has been reported as missing vehicle ", result.getLicensePlate());
                     view.showToast(message);
                 }
             });
 
-
             Intent intent = new Intent(view.getContext(), MainActivity.class);
+            // TODO: Find a way to reload vehicles after intent
             view.getContext().startActivity(intent);
         }
 
@@ -48,7 +47,7 @@ public class NewVehicleActivityPresenter{
         void showToast(String message);
     }
 
-    private boolean isStringNullOrEmpty(String string){
-        return string.equals(null) || string.equals("");
+    private boolean isStringNullOrEmpty(String value){
+        return value.equals(null) || value.equals("");
     }
 }

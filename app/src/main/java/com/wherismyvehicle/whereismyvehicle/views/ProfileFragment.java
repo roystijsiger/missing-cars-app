@@ -12,30 +12,26 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.wherismyvehicle.whereismyvehicle.data.authentication.Singleton;
-import com.wherismyvehicle.whereismyvehicle.presenters.ProfileFragmentPresenter;
 
-public class ProfileFragment extends Fragment implements ProfileFragmentPresenter.View {
+public class ProfileFragment extends Fragment {
 
-    private ProfileFragmentPresenter presenter;
     private Runnable onLoggedOut;
-    private TextView emailTextView;
-    private View view;
+    private Runnable onOpenMissingVehicles;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        presenter = new ProfileFragmentPresenter(this);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.view = inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        emailTextView = view.findViewById(R.id.txt_email_logged_in);
+        TextView emailTextView = view.findViewById(R.id.txt_email_logged_in);
         emailTextView.setText(Singleton.getInstance().getEmail());
         Button logoutButton = view.findViewById(R.id.btn_logout);
+
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,11 +45,7 @@ public class ProfileFragment extends Fragment implements ProfileFragmentPresente
         myVehiclesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment myVehiclesFragment = new MyVehiclesFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, myVehiclesFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
+                onOpenMissingVehicles.run();
             }
         });
 
@@ -62,5 +54,9 @@ public class ProfileFragment extends Fragment implements ProfileFragmentPresente
 
     public void onLoggedOut(Runnable runnable) {
         onLoggedOut = runnable;
+    }
+
+    public void setOnOpenMissingVehicles(Runnable runnable) {
+        this.onOpenMissingVehicles = runnable;
     }
 }

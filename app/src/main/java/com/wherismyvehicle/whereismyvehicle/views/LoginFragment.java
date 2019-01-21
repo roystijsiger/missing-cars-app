@@ -15,7 +15,6 @@ import com.wherismyvehicle.whereismyvehicle.presenters.LoginFragmentPresenter;
 
 public class LoginFragment extends Fragment implements LoginFragmentPresenter.View {
     private LoginFragmentPresenter presenter;
-    private View view;
 
     private Runnable onRegister;
     private Runnable onLogin;
@@ -40,7 +39,7 @@ public class LoginFragment extends Fragment implements LoginFragmentPresenter.Vi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_login, container, false);
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         Button loginButton = view.findViewById(R.id.btn_login);
         Button registerButton = view.findViewById(R.id.btn_register);

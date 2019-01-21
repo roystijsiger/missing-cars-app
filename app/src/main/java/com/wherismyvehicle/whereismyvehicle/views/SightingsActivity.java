@@ -7,13 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.wherismyvehicle.whereismyvehicle.models.Sighting;
 import com.wherismyvehicle.whereismyvehicle.presenters.SightingsActivityPresenter;
 import com.wherismyvehicle.whereismyvehicle.views.adapters.SightingsAdapter;
 
 import java.util.ArrayList;
 
 public class SightingsActivity extends AppCompatActivity implements SightingsActivityPresenter.View {
-    private SightingsActivityPresenter presenter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,11 +21,10 @@ public class SightingsActivity extends AppCompatActivity implements SightingsAct
 
         int vehicleId = getIntent().getIntExtra("vehicle_id", 1);
 
-        presenter = new SightingsActivityPresenter(this, vehicleId);
+        SightingsActivityPresenter presenter = new SightingsActivityPresenter(this, vehicleId);
 
         TextView title = findViewById(R.id.txt_title_sightings);
         title.setText(String.format("Vehicle sightings %s", getIntent().getStringExtra("vehicle_license")));
-
 
         presenter.loadSightings();
     }
@@ -34,7 +33,7 @@ public class SightingsActivity extends AppCompatActivity implements SightingsAct
         return this;
     }
 
-    public void setListView(final ArrayList arrayList){
+    public void setListView(final ArrayList<Sighting> arrayList){
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
