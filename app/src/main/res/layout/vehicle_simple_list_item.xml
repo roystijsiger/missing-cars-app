@@ -6,16 +6,16 @@
         android:id="@+id/txt_vehicle_license"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="81-AK_EL"
+        android:text="@string/vehicle_license_placeholder"
         android:textSize="20sp"
         android:textStyle="bold"/>
     <!-- vehicle type -->
     <TextView
         android:id="@+id/lbl_vehicle_type"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_width="80sp"
-        android:text="Type:"
+        android:text="@string/vehicle_type_label_text"
         android:textStyle="bold"
         android:layout_below="@+id/txt_vehicle_license"
         />
@@ -24,9 +24,9 @@
         android:id="@+id/txt_vehicle_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Car"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/lbl_vehicle_type"
+        android:text="@string/vehicle_type_placeholder"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@id/lbl_vehicle_type"
         android:layout_below="@id/txt_vehicle_license"/>
 
     <!-- brand -->
@@ -34,7 +34,7 @@
         android:id="@+id/lbl_vehicle_brand"
         android:layout_height="wrap_content"
         android:layout_width="80sp"
-        android:text="Brand:"
+        android:text="@string/brand_label_text"
         android:textStyle="bold"
         android:layout_below="@id/txt_vehicle_type"/>
 
@@ -42,15 +42,15 @@
         android:id="@+id/txt_vehicle_brand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/lbl_vehicle_brand"
-        android:text="Mercedes"
+        android:layout_toEndOf="@id/lbl_vehicle_brand"
+        android:text="@string/brand_placeholder"
         android:layout_below="@id/txt_vehicle_type"/>
 
     <TextView
         android:id="@+id/lbl_vehicle_color"
         android:layout_width="80sp"
         android:layout_height="wrap_content"
-        android:text="Color"
+        android:text="@string/color_label_text"
         android:textStyle="bold"
         android:layout_below="@id/txt_vehicle_brand"
         />
@@ -59,8 +59,8 @@
         android:id="@+id/txt_vehicle_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/lbl_vehicle_color"
-        android:text="Red"
+        android:layout_toEndOf="@id/lbl_vehicle_color"
+        android:text="@string/vehicle_color_placeholder"
         android:layout_below="@id/txt_vehicle_brand"
         />
 
@@ -69,14 +69,16 @@
         android:layout_below="@id/txt_vehicle_license"
         android:layout_width="60sp"
         android:layout_height="60sp"
-        android:layout_toLeftOf="@id/btn_show_location"
-        android:src="@drawable/ic_eye"/>
+        android:layout_toStartOf="@id/btn_show_location"
+        android:src="@drawable/ic_eye"
+        android:contentDescription="@string/vehicles_sighting_button_content_description"/>
 
     <ImageButton
         android:id="@+id/btn_show_location"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_below="@id/txt_vehicle_license"
         android:layout_width="60sp"
         android:layout_height="60sp"
-        android:src="@drawable/ic_gps_fixed"/>
+        android:src="@drawable/ic_gps_fixed"
+        android:contentDescription="@string/show_vehicle_location_button_content_description"/>
 </RelativeLayout>

@@ -1,12 +1,43 @@
 <resources>
     <string name="app_name">Where is my vehicle</string>
     <string name="nav_vehicles">Vehicles</string>
-    <string name="nav_user">My</string>
-    <string name="nav_sightings">Sightings</string>
+    <string name="nav_user">My account</string>
     <string name="google_api_key">AIzaSyD-tB2AUGvcF3zrzAmM4aODyDU3qr0jD_k</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="content_description_camera_icon">Camera icon</string>
     <string name="sighting_take_picture_instructions">Please take a picture of the vehicle</string>
+    <string name="take_image_button_content_description">Take image button</string>
+    <string name="add_vehicle_button_content_description">Add vehicle button</string>
+    <string name="show_current_location_button_content_description">Show current location button</string>
+    <string name="sighting_vehicle_photo_content_description">Last picture of the sighted vehicle</string>
+    <string name="vehicles_sighting_button_content_description">Post sighting to vehicle</string>
+    <string name="show_vehicle_location_button_content_description">Show vehicle location</string>
+    <string name="vehicle_license_hint">Vehicle license</string>
+    <string name="profile_email_label_text">Email</string>
+    <string name="my_vehicles_button">My vehicles</string>
+    <string name="km_unit">km</string>
+    <string name="add_vehicle_button_content_descriptor">Add vehicle button</string>
+    <string name="vehicle_type_label_text">Type</string>
+    <string name="vehicle_type_placeholder">Car</string>
+    <string name="brand_label_text">Brand</string>
+    <string name="brand_placeholder">Mercedes</string>
+    <string name="color_label_text">Color</string>
+    <string name="vehicle_color_placeholder">Red</string>
+    <string name="txt_add_sighting_title_placeholder">Add sighting for…</string>
+    <string name="new_vehicle_title">New vehicle</string>
+    <string name="license_plate_label">License plate</string>
+    <string name="select_last_known_location_button">Select last known location</string>
+    <string name="selected_location_text">Selected location</string>
+    <string name="report_missing_vehicle_button">Report missing vehicle</string>
+    <string name="vehicle_radius_label">Vehicle radius (not working yet)</string>
+    <string name="sightings_title_placeholder">Sightings…</string>
+    <string name="password_label_text">Password</string>
+    <string name="login_button_text">Login</string>
+    <string name="register_button_text">Register</string>
+    <string name="profile_title">Profile</string>
+    <string name="profile_email_placeholder">roy@example.com</string>
+    <string name="logout_button_text">Logout</string>
+    <string name="confirm_password_hint">Confirm password</string>
+    <string name="vehicle_license_placeholder">81-AK_EL</string>
     <string name="post_sighting_button_text">Post sighting</string>
+    <string name="password_label">Password</string>
 </resources>

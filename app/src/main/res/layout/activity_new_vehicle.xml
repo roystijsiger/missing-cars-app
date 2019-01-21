@@ -3,11 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp">
+
     <TextView
         android:id="@+id/txt_title_new_vehicle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New vehicle"
+        android:text="@string/new_vehicle_title"
         android:textSize="20sp"/>
 
     <!-- vehicle license -->
@@ -15,16 +16,18 @@
         android:id="@+id/lbl_vehicle_license"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vehicle license:"
+        android:text="@string/license_plate_label"
         android:layout_below="@id/txt_title_new_vehicle"
         />
+
     <EditText
         android:id="@+id/txt_vehicle_license"
         android:labelFor="@id/txt_vehicle_license"
-        android:hint="Vehicle license"
+        android:hint="@string/vehicle_license_hint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lbl_vehicle_license"/>
+        android:layout_below="@id/lbl_vehicle_license"
+        android:importantForAutofill="no" />
 
 
     <!-- dropdown with the vehicle types -->
@@ -32,7 +35,7 @@
         android:id="@+id/lbl_vehicle_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Type:"
+        android:text="@string/vehicle_type_label_text"
         android:layout_below="@id/txt_vehicle_license"/>
 
     <Spinner
@@ -44,14 +47,14 @@
     <!-- brand -->
     <TextView
         android:id="@id/lbl_vehicle_brand"
-        android:text="Brand:"
+        android:text="@string/brand_label_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/spinner_vehicle_type"/>
 
     <EditText
         android:id="@+id/txt_vehicle_brand"
-        android:hint="Vehicle brand"
+        android:hint="@string/brand_placeholder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/lbl_vehicle_brand"/>
@@ -59,14 +62,14 @@
     <!-- color -->
     <TextView
         android:id="@id/lbl_vehicle_color"
-        android:text="Vehicle color:"
+        android:text="@string/color_label_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_vehicle_brand"/>
 
     <EditText
         android:id="@+id/txt_vehicle_color"
-        android:hint="Vehicle color"
+        android:hint="@string/vehicle_color_placeholder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/lbl_vehicle_color"/>
@@ -77,13 +80,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_vehicle_color"
-        android:text="Select last known location"/>
+        android:text="@string/select_last_known_location_button"/>
 
     <TextView
         android:id="@+id/txt_current_selected_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Selected location: "
+        android:text="@string/selected_location_text"
         android:layout_below="@id/btn_location_picker"
         android:layout_marginBottom="10dp"
         android:textColor="#ccc"/>
@@ -94,6 +97,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimary"
-        android:text="Report missing vehicle"
+        android:text="@string/report_missing_vehicle_button"
+        android:textColor="@color/colorPrimaryForeground"
         android:layout_below="@id/txt_current_selected_location"/>
 </RelativeLayout>

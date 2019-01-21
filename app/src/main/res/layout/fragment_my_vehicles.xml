@@ -16,6 +16,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:background="?android:attr/colorBackground"/>
+        android:layout_alignParentEnd="true"
+        android:background="?android:attr/colorBackground"
+        android:contentDescription="@string/add_vehicle_button_content_description"/>
 </RelativeLayout>

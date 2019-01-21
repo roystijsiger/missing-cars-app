@@ -11,12 +11,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="Sightings 28-ab-cd"/>
+        android:text="@string/sightings_title_placeholder"/>
 
     <ListView
         android:id="@+id/listview_sightings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_title_sightings"></ListView>
+        android:layout_below="@+id/txt_title_sightings" />
 
 </RelativeLayout>
