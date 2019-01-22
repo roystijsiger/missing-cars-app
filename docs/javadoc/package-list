@@ -1,0 +1,10 @@
+com.wherismyvehicle.whereismyvehicle
+com.wherismyvehicle.whereismyvehicle.data
+com.wherismyvehicle.whereismyvehicle.data.authentication
+com.wherismyvehicle.whereismyvehicle.data.localPersistence
+com.wherismyvehicle.whereismyvehicle.data.webPersistence
+com.wherismyvehicle.whereismyvehicle.data.webPersistence.exceptions
+com.wherismyvehicle.whereismyvehicle.models
+com.wherismyvehicle.whereismyvehicle.presenters
+com.wherismyvehicle.whereismyvehicle.views
+com.wherismyvehicle.whereismyvehicle.views.adapters
