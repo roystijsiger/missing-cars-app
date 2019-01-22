@@ -10,3 +10,8 @@ Download the latest APK from the releases page on you're android phone.
 - Install Android Studio
 - Install SDK level 28
 - Open the project in Android Studio and run using an emulator or device
+
+### Deployment instructions
+- Goto Build > Generate singed bundle / APK
+- Select APK
+- Follow instructions
