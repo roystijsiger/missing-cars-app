@@ -18,6 +18,8 @@ public class SightingsActivityPresenter {
     public SightingsActivityPresenter(View view, int vehicleId){
         this.view = view;
         dataPersistence = new ModelPersistenceService<>(view.getContext(), String.format(Locale.ENGLISH, "vehicles/%d/sightings", vehicleId));
+
+        loadSightings();
     }
 
     public void loadSightings(){

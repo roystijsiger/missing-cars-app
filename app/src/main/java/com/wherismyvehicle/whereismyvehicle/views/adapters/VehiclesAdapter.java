@@ -54,6 +54,7 @@ public class VehiclesAdapter extends ArrayAdapter<Vehicle> {
                 if(onlyMine){
                     Intent intent = new Intent(getContext(), SightingsActivity.class);
                     intent.putExtra("vehicle_license", vehicle.getLicensePlate());
+                    intent.putExtra("vehicle_id", vehicle.getId());
                     getContext().startActivity(intent);
                 }
                 else {
